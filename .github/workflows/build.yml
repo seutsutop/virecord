@@ -21,11 +21,11 @@ jobs:
         dotnet-version: '9.0.x'
 
     - name: Restore
-      run: dotnet restore VIrecord.sln -r win-x64
+      run: dotnet restore VIrecord.sln
       shell: pwsh
 
     - name: Build
-      run: dotnet build VIrecord.sln -c Debug --no-restore -r win-x64
+      run: dotnet build VIrecord.sln -c Debug --no-restore
       shell: pwsh
 
     - name: Publish main app
