@@ -1,0 +1,56 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0-windows10.0.22621.0</TargetFramework>
+    <OutputType>WinExe</OutputType>
+    <ApplicationIcon>VIrecord_Icon.ico</ApplicationIcon>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Description>Screen capture, file sharing and productivity tool</Description>
+    <SupportedOSPlatformVersion>10.0.22621.0</SupportedOSPlatformVersion>
+    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+    <ForceDesignerDpiUnaware>true</ForceDesignerDpiUnaware>
+    <ApplicationVisualStyles>true</ApplicationVisualStyles>
+    <ApplicationUseCompatibleTextRendering>false</ApplicationUseCompatibleTextRendering>
+    <ApplicationDefaultFont>Microsoft Sans Serif, 8.25pt</ApplicationDefaultFont>
+    <CETCompat>false</CETCompat>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" />
+    <PackageReference Include="SkiaSharp" />
+    <PackageReference Include="SkiaSharp.Views.WindowsForms" />
+    <PackageReference Include="ZXing.Net" />
+    <PackageReference Include="ZXing.Net.Bindings.Windows.Compatibility" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VIrecord.HistoryLib\VIrecord.HistoryLib.csproj" />
+    <ProjectReference Include="..\VIrecord.ImageEditor.App\VIrecord.ImageEditor.App.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <SkipGetTargetFrameworkProperties>true</SkipGetTargetFrameworkProperties>
+    </ProjectReference>
+    <ProjectReference Include="..\VIrecord.ImageEditor\VIrecord.ImageEditor.csproj" />
+    <ProjectReference Include="..\VIrecord.ImageEffectsLib\VIrecord.ImageEffectsLib.csproj" />
+    <ProjectReference Include="..\VIrecord.IndexerLib\VIrecord.IndexerLib.csproj" />
+    <ProjectReference Include="..\VIrecord.MediaLib\VIrecord.MediaLib.csproj" />
+    <ProjectReference Include="..\VIrecord.NativeMessagingHost\VIrecord.NativeMessagingHost.csproj">
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <SkipGetTargetFrameworkProperties>true</SkipGetTargetFrameworkProperties>
+    </ProjectReference>
+    <ProjectReference Include="..\VIrecord.ScreenCaptureLib\VIrecord.ScreenCaptureLib.csproj" />
+    <ProjectReference Include="..\VIrecord.HelpersLib\VIrecord.HelpersLib.csproj" />
+    <ProjectReference Include="..\VIrecord.UploadersLib\VIrecord.UploadersLib.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="host-manifest-chrome.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="host-manifest-firefox.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="VIrecord_File_Icon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <RuntimeHostConfigurationOption Include="System.Globalization.UseNls" Value="true" />
+  </ItemGroup>
+</Project>

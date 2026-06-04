@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <BaseOutputPath>$(MSBuildThisFileDirectory)..\VIrecord\bin\</BaseOutputPath>
+    <OutputType>WinExe</OutputType>
+    <AssemblyName>VIrecord_NativeMessagingHost</AssemblyName>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VIrecord.HelpersLib\VIrecord.HelpersLib.csproj" />
+  </ItemGroup>
+</Project>
