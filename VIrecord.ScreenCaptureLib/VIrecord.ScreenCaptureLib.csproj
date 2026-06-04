@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <OutputType>Library</OutputType>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VIrecord.HelpersLib\VIrecord.HelpersLib.csproj" />
+    <ProjectReference Include="..\VIrecord.ImageEffectsLib\VIrecord.ImageEffectsLib.csproj" />
+    <ProjectReference Include="..\VIrecord.MediaLib\VIrecord.MediaLib.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="ImageListView">
+      <HintPath>..\Libs\ImageListView.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

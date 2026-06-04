@@ -1,4 +1,4 @@
-name: Build ShareX
+name: Build VIrecord
 
 on:
   push:
@@ -37,7 +37,7 @@ jobs:
             platform: ARM64
 
     env:
-      SOLUTION_FILE_PATH: ShareX.sln
+      SOLUTION_FILE_PATH: VIrecord.sln
       ASSEMBLY_INFO_PATH: Directory.build.props
 
     outputs:
@@ -78,14 +78,14 @@ jobs:
         if: env.API_KEYS != ''
         working-directory: ${{ env.GITHUB_WORKSPACE }}
         run: |
-          Invoke-WebRequest -Uri "$env:API_KEYS" -OutFile "ShareX.UploadersLib\APIKeys\APIKeysLocal.cs"
+          Invoke-WebRequest -Uri "$env:API_KEYS" -OutFile "VIrecord.UploadersLib\APIKeys\APIKeysLocal.cs"
 
       - name: Restore NuGet packages
         run: |
           dotnet restore --runtime "${{ env.RUNTIME_ID }}" "${{ env.SOLUTION_FILE_PATH }}"
           if ("${{ matrix.platform }}" -eq "ARM64") {
-            # ShareX.Setup always builds as x64, so restore win-x64 packages too
-            dotnet restore --runtime "win-x64" "ShareX.Setup\ShareX.Setup.csproj"
+            # VIrecord.Setup always builds as x64, so restore win-x64 packages too
+            dotnet restore --runtime "win-x64" "VIrecord.Setup\VIrecord.Setup.csproj"
           }
 
       - name: Build
@@ -94,97 +94,97 @@ jobs:
       - name: Build Setup (x64)
         if: matrix.platform == 'ARM64'
         run: |
-          # Build ShareX.Setup and its dependencies for x64 since it can't run as ARM64 on CI
-          dotnet build --configuration "${{ matrix.configuration }}" -p:Platform="x64" --self-contained true "ShareX.Setup\ShareX.Setup.csproj"
+          # Build VIrecord.Setup and its dependencies for x64 since it can't run as ARM64 on CI
+          dotnet build --configuration "${{ matrix.configuration }}" -p:Platform="x64" --self-contained true "VIrecord.Setup\VIrecord.Setup.csproj"
 
       - name: Setup
         working-directory: ${{ env.GITHUB_WORKSPACE }}
         run: |
-          & "ShareX.Setup\bin\${{ matrix.configuration }}\win-x64\ShareX.Setup.exe" -silent -job "${{ matrix.configuration }}" -platform "${{ matrix.platform }}"
+          & "VIrecord.Setup\bin\${{ matrix.configuration }}\win-x64\VIrecord.Setup.exe" -silent -job "${{ matrix.configuration }}" -platform "${{ matrix.platform }}"
 
       - name: Upload artifact (Setup-x64)
         if: matrix.configuration == 'Release' && matrix.platform == 'x64'
         uses: actions/upload-artifact@v7
         with:
           name: Setup-x64
-          path: Output\ShareX-${{ env.APP_VERSION }}-setup-${{ env.PLATFORM }}.exe
+          path: Output\VIrecord-${{ env.APP_VERSION }}-setup-${{ env.PLATFORM }}.exe
 
       - name: Upload artifact (Setup-ARM64)
         if: matrix.configuration == 'Release' && matrix.platform == 'ARM64'
         uses: actions/upload-artifact@v7
         with:
           name: Setup-ARM64
-          path: Output\ShareX-${{ env.APP_VERSION }}-setup-${{ env.PLATFORM }}.exe
+          path: Output\VIrecord-${{ env.APP_VERSION }}-setup-${{ env.PLATFORM }}.exe
 
       - name: Upload artifact (Portable-x64)
         if: matrix.configuration == 'Release' && matrix.platform == 'x64'
         uses: actions/upload-artifact@v7
         with:
           name: Portable-x64
-          path: Output\ShareX-${{ env.APP_VERSION }}-portable-${{ env.PLATFORM }}.zip
+          path: Output\VIrecord-${{ env.APP_VERSION }}-portable-${{ env.PLATFORM }}.zip
 
       - name: Upload artifact (Portable-ARM64)
         if: matrix.configuration == 'Release' && matrix.platform == 'ARM64'
         uses: actions/upload-artifact@v7
         with:
           name: Portable-ARM64
-          path: Output\ShareX-${{ env.APP_VERSION }}-portable-${{ env.PLATFORM }}.zip
+          path: Output\VIrecord-${{ env.APP_VERSION }}-portable-${{ env.PLATFORM }}.zip
 
       - name: Upload artifact (Debug-x64)
         if: matrix.configuration == 'Debug' && matrix.platform == 'x64'
         uses: actions/upload-artifact@v7
         with:
           name: Debug-x64
-          path: Output\ShareX-${{ env.APP_VERSION }}-debug-${{ env.PLATFORM }}.zip
+          path: Output\VIrecord-${{ env.APP_VERSION }}-debug-${{ env.PLATFORM }}.zip
 
       - name: Upload artifact (Debug-ARM64)
         if: matrix.configuration == 'Debug' && matrix.platform == 'ARM64'
         uses: actions/upload-artifact@v7
         with:
           name: Debug-ARM64
-          path: Output\ShareX-${{ env.APP_VERSION }}-debug-${{ env.PLATFORM }}.zip
+          path: Output\VIrecord-${{ env.APP_VERSION }}-debug-${{ env.PLATFORM }}.zip
 
       - name: Upload artifact (Steam-x64)
         if: matrix.configuration == 'Steam' && matrix.platform == 'x64'
         uses: actions/upload-artifact@v7
         with:
           name: Steam-x64
-          path: Output\ShareX-${{ env.APP_VERSION }}-Steam-${{ env.PLATFORM }}.zip
+          path: Output\VIrecord-${{ env.APP_VERSION }}-Steam-${{ env.PLATFORM }}.zip
 
       - name: Upload artifact (Steam-ARM64)
         if: matrix.configuration == 'Steam' && matrix.platform == 'ARM64'
         uses: actions/upload-artifact@v7
         with:
           name: Steam-ARM64
-          path: Output\ShareX-${{ env.APP_VERSION }}-Steam-${{ env.PLATFORM }}.zip
+          path: Output\VIrecord-${{ env.APP_VERSION }}-Steam-${{ env.PLATFORM }}.zip
 
       - name: Upload artifact (MicrosoftStore-x64)
         if: matrix.configuration == 'MicrosoftStore' && matrix.platform == 'x64'
         uses: actions/upload-artifact@v7
         with:
           name: MicrosoftStore-x64
-          path: Output\ShareX-${{ env.APP_VERSION }}-MicrosoftStore-${{ env.PLATFORM }}.appx
+          path: Output\VIrecord-${{ env.APP_VERSION }}-MicrosoftStore-${{ env.PLATFORM }}.appx
 
       - name: Upload artifact (MicrosoftStore-ARM64)
         if: matrix.configuration == 'MicrosoftStore' && matrix.platform == 'ARM64'
         uses: actions/upload-artifact@v7
         with:
           name: MicrosoftStore-ARM64
-          path: Output\ShareX-${{ env.APP_VERSION }}-MicrosoftStore-${{ env.PLATFORM }}.appx
+          path: Output\VIrecord-${{ env.APP_VERSION }}-MicrosoftStore-${{ env.PLATFORM }}.appx
 
       - name: Upload artifact (MicrosoftStoreDebug-x64)
         if: matrix.configuration == 'MicrosoftStoreDebug' && matrix.platform == 'x64'
         uses: actions/upload-artifact@v7
         with:
           name: MicrosoftStoreDebug-x64
-          path: Output\ShareX-${{ env.APP_VERSION }}-MicrosoftStore-debug-${{ env.PLATFORM }}.appx
+          path: Output\VIrecord-${{ env.APP_VERSION }}-MicrosoftStore-debug-${{ env.PLATFORM }}.appx
 
       - name: Upload artifact (MicrosoftStoreDebug-ARM64)
         if: matrix.configuration == 'MicrosoftStoreDebug' && matrix.platform == 'ARM64'
         uses: actions/upload-artifact@v7
         with:
           name: MicrosoftStoreDebug-ARM64
-          path: Output\ShareX-${{ env.APP_VERSION }}-MicrosoftStore-debug-${{ env.PLATFORM }}.appx
+          path: Output\VIrecord-${{ env.APP_VERSION }}-MicrosoftStore-debug-${{ env.PLATFORM }}.appx
 
   release:
     name: Release
@@ -292,7 +292,7 @@ jobs:
           $output = "| File | SHA256 |`r`n| --- | --- |`r`n$($checksums.Trim())"
           echo $output >> $env:GITHUB_STEP_SUMMARY
           if ($env:GITHUB_REF.StartsWith("refs/tags/v")) {
-            $output = "**Changelog:** https://getsharex.com/changelog#$env:GITHUB_REF_NAME`r`n`r`n$output"
+            $output = "**Changelog:** https://getVIrecord.com/changelog#$env:GITHUB_REF_NAME`r`n`r`n$output"
           }
           echo $output
           Set-Content -Path "${{ env.RELEASE_BODY_PATH }}" -Value "$output" -NoNewline
@@ -306,23 +306,23 @@ jobs:
           repository: ${{ env.REPO_DEV_BUILDS }}
           token: ${{ env.CUSTOM_GITHUB_TOKEN }}
           tag_name: v${{ env.APP_VERSION }}
-          name: ShareX ${{ env.APP_VERSION }} Dev
+          name: VIrecord ${{ env.APP_VERSION }} Dev
           body_path: ${{ env.RELEASE_BODY_PATH }}
           draft: false
           prerelease: false
           files: |
-            Output/ShareX-${{ env.APP_VERSION }}-setup-x64.exe
-            # Output/ShareX-${{ env.APP_VERSION }}-setup-arm64.exe
-            Output/ShareX-${{ env.APP_VERSION }}-portable-x64.zip
-            # Output/ShareX-${{ env.APP_VERSION }}-portable-arm64.zip
-            Output/ShareX-${{ env.APP_VERSION }}-debug-x64.zip
-            Output/ShareX-${{ env.APP_VERSION }}-debug-arm64.zip
-            Output/ShareX-${{ env.APP_VERSION }}-Steam-x64.zip
-            # Output/ShareX-${{ env.APP_VERSION }}-Steam-arm64.zip
-            Output/ShareX-${{ env.APP_VERSION }}-MicrosoftStore-x64.appx
-            Output/ShareX-${{ env.APP_VERSION }}-MicrosoftStore-arm64.appx
-            Output/ShareX-${{ env.APP_VERSION }}-MicrosoftStore-debug-x64.appx
-            Output/ShareX-${{ env.APP_VERSION }}-MicrosoftStore-debug-arm64.appx
+            Output/VIrecord-${{ env.APP_VERSION }}-setup-x64.exe
+            # Output/VIrecord-${{ env.APP_VERSION }}-setup-arm64.exe
+            Output/VIrecord-${{ env.APP_VERSION }}-portable-x64.zip
+            # Output/VIrecord-${{ env.APP_VERSION }}-portable-arm64.zip
+            Output/VIrecord-${{ env.APP_VERSION }}-debug-x64.zip
+            Output/VIrecord-${{ env.APP_VERSION }}-debug-arm64.zip
+            Output/VIrecord-${{ env.APP_VERSION }}-Steam-x64.zip
+            # Output/VIrecord-${{ env.APP_VERSION }}-Steam-arm64.zip
+            Output/VIrecord-${{ env.APP_VERSION }}-MicrosoftStore-x64.appx
+            Output/VIrecord-${{ env.APP_VERSION }}-MicrosoftStore-arm64.appx
+            Output/VIrecord-${{ env.APP_VERSION }}-MicrosoftStore-debug-x64.appx
+            Output/VIrecord-${{ env.APP_VERSION }}-MicrosoftStore-debug-arm64.appx
 
       - name: Release (Stable)
         env:
@@ -333,12 +333,12 @@ jobs:
           repository: ${{ github.repository }}
           token: ${{ env.CUSTOM_GITHUB_TOKEN }}
           tag_name: ${{ github.ref_name }}
-          name: ShareX ${{ env.APP_VERSION }}
+          name: VIrecord ${{ env.APP_VERSION }}
           body_path: ${{ env.RELEASE_BODY_PATH }}
           draft: true
           prerelease: true
           files: |
-            Output/ShareX-${{ env.APP_VERSION }}-setup-x64.exe
-            # Output/ShareX-${{ env.APP_VERSION }}-setup-arm64.exe
-            Output/ShareX-${{ env.APP_VERSION }}-portable-x64.zip
-            # Output/ShareX-${{ env.APP_VERSION }}-portable-arm64.zip
+            Output/VIrecord-${{ env.APP_VERSION }}-setup-x64.exe
+            # Output/VIrecord-${{ env.APP_VERSION }}-setup-arm64.exe
+            Output/VIrecord-${{ env.APP_VERSION }}-portable-x64.zip
+            # Output/VIrecord-${{ env.APP_VERSION }}-portable-arm64.zip

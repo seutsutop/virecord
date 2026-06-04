@@ -1,0 +1,9 @@
+﻿{
+  "name": "com.getVIrecord.VIrecord",
+  "description": "VIrecord",
+  "path": "VIrecord_NativeMessagingHost.exe",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://nlkoigbdolhchiicbonbihbphgamnaoc/"
+  ]
+}

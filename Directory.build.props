@@ -1,8 +1,8 @@
 <Project>
   <PropertyGroup>
-    <Company>ShareX Team</Company>
-    <Product>ShareX</Product>
-    <Copyright>Copyright (c) 2007-2026 ShareX Team</Copyright>
+    <Company>VIrecord Team</Company>
+    <Product>VIrecord</Product>
+    <Copyright>Copyright (c) 2007-2026 VIrecord Team</Copyright>
     <Version>20.2.0</Version>
     <EmbeddedResourceUseDependentUponConvention>true</EmbeddedResourceUseDependentUponConvention>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>

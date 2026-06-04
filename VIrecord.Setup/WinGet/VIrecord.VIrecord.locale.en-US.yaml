@@ -1,0 +1,40 @@
+# Created using wingetcreate 1.6.1.0
+# yaml-language-server: $schema=https://aka.ms/winget-manifest.defaultLocale.1.6.0.schema.json
+
+PackageIdentifier: VIrecord.VIrecord
+PackageVersion: {PackageVersion}
+PackageLocale: en-US
+Publisher: VIrecord Team
+PublisherUrl: https://getVIrecord.com
+PublisherSupportUrl: https://github.com/VIrecord/VIrecord/issues
+PrivacyUrl: https://getVIrecord.com/privacy-policy
+Author: VIrecord Team
+PackageName: VIrecord
+PackageUrl: https://github.com/VIrecord/VIrecord
+License: GNU General Public License v3.0
+LicenseUrl: https://github.com/VIrecord/VIrecord/blob/master/LICENSE.txt
+Copyright: Copyright (c) 2007-2026 VIrecord Team
+ShortDescription: VIrecord is a free and open-source screen capture and file sharing software.
+Description: |-
+  VIrecord is a free and open source program that lets you capture or record any area of your screen and share it with a single press of a key.
+  It also allows uploading images, text or other types of files to many supported destinations you can choose from.
+Moniker: VIrecord
+Tags:
+- capture
+- color-picker
+- file-sharing
+- file-upload
+- foss
+- gif-recorder
+- image-annotation
+- ocr
+- productivity
+- region-capture
+- screen-capture
+- screen-recorder
+- screenshot
+- share
+- uploader
+- url-shortener
+ManifestType: defaultLocale
+ManifestVersion: 1.6.0

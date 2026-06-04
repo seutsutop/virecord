@@ -1,0 +1,9 @@
+﻿{
+  "name": "VIrecord",
+  "description": "VIrecord",
+  "path": "VIrecord_NativeMessagingHost.exe",
+  "type": "stdio",
+  "allowed_extensions": [
+    "firefox@getVIrecord.com"
+  ]
+}
