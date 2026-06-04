@@ -1,0 +1,13 @@
+<Application x:Class="VIrecord.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <SolidColorBrush x:Key="PrimaryBrush" Color="#6C5CE7"/>
+            <SolidColorBrush x:Key="AccentBrush" Color="#A29BFE"/>
+            <SolidColorBrush x:Key="DarkBrush" Color="#2D3436"/>
+            <SolidColorBrush x:Key="LightBrush" Color="#DFE6E9"/>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

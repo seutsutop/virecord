@@ -1,34 +1,36 @@
 # VIrecord
 
-Screen capture, screen recording, and file sharing tool for Windows.
-
-Based on [ShareX](https://github.com/ShareX/ShareX) by Jaex.
+Screen recorder for Windows — capture screen, encode with FFmpeg, no watermark.
 
 ## Features
 
-- Screen capture (full screen, window, region, scrolling, etc.)
-- Screen recording (GIF, MP4 with FFmpeg)
-- Screenshot annotation and editing
-- File upload to 80+ destinations
-- Custom after-capture tasks
-- Hotkeys, clipboard, drag & drop
-- Color picker, ruler, image editor
-- Multi-language support
+- **Screen capture** via GDI (works on all Windows)
+- **Hardware encoding** — NVENC (NVIDIA), QSV (Intel), AMF (AMD)
+- **Software encoding** — x264
+- **Output formats** — MP4, AVI, MKV, GIF
+- **Audio recording** — system + microphone
+- **Hotkeys** — global shortcuts
+- **No watermark** — MIT licensed, fully open source
+
+## Requirements
+
+- Windows 10+
+- [.NET 8 Runtime](https://dotnet.microsoft.com/download/dotnet/8.0) (or use self-contained build)
+- [FFmpeg](https://ffmpeg.org/) in PATH (for encoding)
 
 ## Download
 
-Download the latest release from the [Releases](https://github.com/seutsutop/virecord/releases) page.
+Get the latest release from [Releases](https://github.com/seutsutop/virecord/releases).
 
 ## Building
 
-1. Open `VIrecord.sln` in Visual Studio 2022+
-2. Restore NuGet packages
-3. Build in Release mode
+```bash
+dotnet restore VIrecord.sln
+dotnet build VIrecord.sln -c Release
+```
 
-Requires .NET Framework 4.8 and Windows 10+.
+Or open `VIrecord.sln` in Visual Studio 2022+.
 
 ## License
 
 [MIT License](LICENSE.txt) — Copyright (c) 2026 VIbrah
-
-Original work: ShareX by Jaex (GPLv3). See [Licenses/](Licenses/) for dependency licenses.
