@@ -2,9 +2,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:theming="using:ShareX.ImageEditor.Presentation.Theming"
+             xmlns:theming="using:VIrecord.ImageEditor.Presentation.Theming"
              mc:Ignorable="d" d:DesignWidth="120" d:DesignHeight="40"
-             x:Class="ShareX.ImageEditor.Presentation.Controls.ZoomPickerDropdown"
+             x:Class="VIrecord.ImageEditor.Presentation.Controls.ZoomPickerDropdown"
              x:Name="ZoomPickerDropdownRoot">
 
     <Grid>
@@ -19,10 +19,10 @@
                 <!-- Zoom Icon -->
                 <TextBlock Grid.Column="0"
                            Text="{x:Static theming:EditorIcons.Zoom}"
-                           FontFamily="{DynamicResource ShareX.FontFamily.Icon}"
+                           FontFamily="{DynamicResource VIrecord.FontFamily.Icon}"
                            FontWeight="Normal"
                            FontSize="16"
-                           Foreground="{DynamicResource ShareX.Brush.Text.Secondary}"
+                           Foreground="{DynamicResource VIrecord.Brush.Text.Secondary}"
                            VerticalAlignment="Center"
                            Margin="0,0,6,0"/>
 
@@ -39,10 +39,10 @@
                            Classes="dropdown-chevron"
                            Classes.open="{Binding #ZoomPopup.IsOpen}"
                            Text="{x:Static theming:EditorIcons.ChevronDown}"
-                           FontFamily="{DynamicResource ShareX.FontFamily.Icon}"
+                           FontFamily="{DynamicResource VIrecord.FontFamily.Icon}"
                            FontWeight="Normal"
                            FontSize="10"
-                           Foreground="{DynamicResource ShareX.Brush.Text.Secondary}"
+                           Foreground="{DynamicResource VIrecord.Brush.Text.Secondary}"
                            VerticalAlignment="Center"
                            Margin="8,0,4,0"/>
             </Grid>
@@ -85,7 +85,7 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
                     <!-- Separator -->
-                    <Border Height="1" Background="{DynamicResource ShareX.Brush.Separator}" Margin="4,4"/>
+                    <Border Height="1" Background="{DynamicResource VIrecord.Brush.Separator}" Margin="4,4"/>
                     <!-- Zoom to Fit -->
                     <Button Height="32"
                             MinWidth="60"

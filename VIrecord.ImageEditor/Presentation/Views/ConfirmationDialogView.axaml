@@ -2,22 +2,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="clr-namespace:ShareX.ImageEditor.Presentation.ViewModels"
+             xmlns:vm="clr-namespace:VIrecord.ImageEditor.Presentation.ViewModels"
              mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="200"
-             x:Class="ShareX.ImageEditor.Presentation.Views.ConfirmationDialogView"
+             x:Class="VIrecord.ImageEditor.Presentation.Views.ConfirmationDialogView"
              x:DataType="vm:ConfirmationDialogViewModel">
 
-    <Border Background="{DynamicResource ShareX.Brush.Background.Popup}" 
-            BorderBrush="{DynamicResource ShareX.Brush.Border}" 
+    <Border Background="{DynamicResource VIrecord.Brush.Background.Popup}" 
+            BorderBrush="{DynamicResource VIrecord.Brush.Border}" 
             BorderThickness="1" 
             CornerRadius="4" 
             Padding="0" 
             Width="400"
             BoxShadow="0 4 10 0 #40000000">
-        <Grid RowDefinitions="Auto,*,Auto" Background="{DynamicResource ShareX.Brush.Background.Panel}">
+        <Grid RowDefinitions="Auto,*,Auto" Background="{DynamicResource VIrecord.Brush.Background.Panel}">
             <!-- Title Bar -->
-            <Border Grid.Row="0" Background="{DynamicResource ShareX.Brush.Background.Toolbar}" 
-                    BorderBrush="{DynamicResource ShareX.Brush.Border}" BorderThickness="0,0,0,1"
+            <Border Grid.Row="0" Background="{DynamicResource VIrecord.Brush.Background.Toolbar}" 
+                    BorderBrush="{DynamicResource VIrecord.Brush.Border}" BorderThickness="0,0,0,1"
                     Padding="14,8">
                 <TextBlock Text="{Binding Title}" FontSize="15" VerticalAlignment="Center"/>
             </Border>
@@ -31,8 +31,8 @@
             </Border>
 
             <!-- Buttons -->
-            <Border Grid.Row="2" Background="{DynamicResource ShareX.Brush.Background.Toolbar}" 
-                    BorderBrush="{DynamicResource ShareX.Brush.Border}" BorderThickness="0,1,0,0"
+            <Border Grid.Row="2" Background="{DynamicResource VIrecord.Brush.Background.Toolbar}" 
+                    BorderBrush="{DynamicResource VIrecord.Brush.Border}" BorderThickness="0,1,0,0"
                     Padding="10">
                 <StackPanel Orientation="Horizontal" Spacing="5" HorizontalAlignment="Right">
                     <Button x:Name="YesButton" Classes="editor-button" Padding="20,0" Content="Yes" Command="{Binding YesCommand}" HorizontalContentAlignment="Center"/>

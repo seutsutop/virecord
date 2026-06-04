@@ -2,9 +2,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:theming="using:ShareX.ImageEditor.Presentation.Theming"
+             xmlns:theming="using:VIrecord.ImageEditor.Presentation.Theming"
              mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="40"
-             x:Class="ShareX.ImageEditor.Presentation.Controls.FontSizePickerDropdown"
+             x:Class="VIrecord.ImageEditor.Presentation.Controls.FontSizePickerDropdown"
              x:Name="FontSizePickerDropdownRoot">
     <Grid>
         <!-- Dropdown Button -->
@@ -18,7 +18,7 @@
                 <!-- Font Size Preview -->
                 <TextBlock Grid.Column="0"
                            Text="{Binding SelectedFontSize, ElementName=FontSizePickerDropdownRoot, StringFormat='{}{0} pt'}"
-                           Foreground="{DynamicResource ShareX.Brush.Text.Secondary}"
+                           Foreground="{DynamicResource VIrecord.Brush.Text.Secondary}"
                            FontSize="12"
                            VerticalAlignment="Center"
                            Margin="0,0,6,0"/>
@@ -31,10 +31,10 @@
                            Classes="dropdown-chevron"
                            Classes.open="{Binding #FontSizePopup.IsOpen}"
                            Text="{x:Static theming:EditorIcons.ChevronDown}"
-                           FontFamily="{DynamicResource ShareX.FontFamily.Icon}"
+                           FontFamily="{DynamicResource VIrecord.FontFamily.Icon}"
                            FontWeight="Normal"
                            FontSize="10"
-                           Foreground="{DynamicResource ShareX.Brush.Text.Secondary}"
+                           Foreground="{DynamicResource VIrecord.Brush.Text.Secondary}"
                            VerticalAlignment="Center"/>
             </Grid>
         </Button>
@@ -65,7 +65,7 @@
                                     VerticalContentAlignment="Center">
                                 <TextBlock Text="{Binding ., StringFormat='{}{0} pt'}"
                                            FontSize="12"
-                                           Foreground="{DynamicResource ShareX.Brush.Text}"/>
+                                           Foreground="{DynamicResource VIrecord.Brush.Text}"/>
                             </Button>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>

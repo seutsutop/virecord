@@ -2,11 +2,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="using:ShareX.ImageEditor.Presentation.ViewModels"
-             xmlns:emoji="using:ShareX.ImageEditor.Presentation.Emoji"
-             xmlns:controls="using:ShareX.ImageEditor.Presentation.Controls"
+             xmlns:vm="using:VIrecord.ImageEditor.Presentation.ViewModels"
+             xmlns:emoji="using:VIrecord.ImageEditor.Presentation.Emoji"
+             xmlns:controls="using:VIrecord.ImageEditor.Presentation.Controls"
              mc:Ignorable="d" d:DesignWidth="760" d:DesignHeight="640"
-             x:Class="ShareX.ImageEditor.Presentation.Views.EmojiPickerDialogView"
+             x:Class="VIrecord.ImageEditor.Presentation.Views.EmojiPickerDialogView"
              x:Name="Root"
              x:DataType="vm:EmojiPickerDialogViewModel">
 
@@ -22,8 +22,8 @@
         </Style>
     </UserControl.Styles>
 
-    <Border Background="{DynamicResource ShareX.Brush.Background.Panel}"
-            BorderBrush="{DynamicResource ShareX.Brush.Border}"
+    <Border Background="{DynamicResource VIrecord.Brush.Background.Panel}"
+            BorderBrush="{DynamicResource VIrecord.Brush.Border}"
             BorderThickness="1"
             CornerRadius="4"
             Width="760"
@@ -87,7 +87,7 @@
                             <TextBlock Text="Try a different keyword."
                                        HorizontalAlignment="Center"
                                        FontSize="11"
-                                       Foreground="{DynamicResource ShareX.Brush.Text.Secondary}"/>
+                                       Foreground="{DynamicResource VIrecord.Brush.Text.Secondary}"/>
                             <Button Classes="editor-button"
                                     Content="Cancel"
                                     Command="{Binding CancelCommand}"
@@ -112,7 +112,7 @@
                                TextAlignment="Center"
                                MaxWidth="330"
                                FontSize="11"
-                               Foreground="{DynamicResource ShareX.Brush.Text.Secondary}"/>
+                               Foreground="{DynamicResource VIrecord.Brush.Text.Secondary}"/>
                 </StackPanel>
             </Grid>
         </Grid>

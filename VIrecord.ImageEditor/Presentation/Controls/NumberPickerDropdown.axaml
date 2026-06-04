@@ -2,9 +2,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:theming="using:ShareX.ImageEditor.Presentation.Theming"
+             xmlns:theming="using:VIrecord.ImageEditor.Presentation.Theming"
              mc:Ignorable="d" d:DesignWidth="180" d:DesignHeight="40"
-             x:Class="ShareX.ImageEditor.Presentation.Controls.NumberPickerDropdown"
+             x:Class="VIrecord.ImageEditor.Presentation.Controls.NumberPickerDropdown"
              x:Name="NumberPickerDropdownRoot">
     <Grid>
         <Button x:Name="DropdownButton"
@@ -20,11 +20,11 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center">
                 <TextBlock Text="{Binding SelectedNumber, ElementName=NumberPickerDropdownRoot}"
-                       Foreground="{DynamicResource ShareX.Brush.Text}"
+                       Foreground="{DynamicResource VIrecord.Brush.Text}"
                        FontSize="12"
                        VerticalAlignment="Center"/>
                 <TextBlock Text="..."
-                       Foreground="{DynamicResource ShareX.Brush.Text.Secondary}"
+                       Foreground="{DynamicResource VIrecord.Brush.Text.Secondary}"
                        FontSize="12"
                        VerticalAlignment="Center"/>
             </StackPanel>
@@ -33,10 +33,10 @@
                            Classes="dropdown-chevron"
                            Classes.open="{Binding #NumberPopup.IsOpen}"
                            Text="{x:Static theming:EditorIcons.ChevronDown}"
-                           FontFamily="{DynamicResource ShareX.FontFamily.Icon}"
+                           FontFamily="{DynamicResource VIrecord.FontFamily.Icon}"
                            FontWeight="Normal"
                            FontSize="10"
-                           Foreground="{DynamicResource ShareX.Brush.Text.Secondary}"
+                           Foreground="{DynamicResource VIrecord.Brush.Text.Secondary}"
                            VerticalAlignment="Center"/>
             </Grid>
         </Button>
@@ -66,7 +66,7 @@
                                     VerticalContentAlignment="Center">
                                 <TextBlock Text="{Binding .}"
                                            FontSize="12"
-                                           Foreground="{DynamicResource ShareX.Brush.Text}"/>
+                                           Foreground="{DynamicResource VIrecord.Brush.Text}"/>
                             </Button>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>

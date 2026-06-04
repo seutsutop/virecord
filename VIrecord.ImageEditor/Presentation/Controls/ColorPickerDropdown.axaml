@@ -3,9 +3,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:cp="clr-namespace:Avalonia.Controls;assembly=Avalonia.Controls.ColorPicker"
-             xmlns:theming="using:ShareX.ImageEditor.Presentation.Theming"
+             xmlns:theming="using:VIrecord.ImageEditor.Presentation.Theming"
              mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="40"
-             x:Class="ShareX.ImageEditor.Presentation.Controls.ColorPickerDropdown"
+             x:Class="VIrecord.ImageEditor.Presentation.Controls.ColorPickerDropdown"
              x:Name="ColorPickerDropdownRoot">
     <Grid>
         <!-- Dropdown Button -->
@@ -26,7 +26,7 @@
                     <!-- Checkered Background -->
                     <Border CornerRadius="4" ClipToBounds="True">
                         <Border.Background>
-                            <DynamicResource ResourceKey="ShareX.Brush.Checkered.Small"/>
+                            <DynamicResource ResourceKey="VIrecord.Brush.Checkered.Small"/>
                         </Border.Background>
                     </Border>
                     
@@ -41,14 +41,14 @@
                             ClipToBounds="True"
                             IsHitTestVisible="False">
                         <Border.Background>
-                            <DynamicResource ResourceKey="ShareX.Brush.Checkered.Small"/>
+                            <DynamicResource ResourceKey="VIrecord.Brush.Checkered.Small"/>
                         </Border.Background>
                     </Border>
                     
                     <!-- Text Color: Plain 'A' label -->
                     <TextBlock Text="A"
                                IsVisible="{Binding ShowTextLabel, ElementName=ColorPickerDropdownRoot}"
-                               FontFamily="{DynamicResource ShareX.FontFamily.Default}"
+                               FontFamily="{DynamicResource VIrecord.FontFamily.Default}"
                                FontWeight="Bold"
                                FontSize="14"
                                Foreground="{Binding IconForeground, ElementName=ColorPickerDropdownRoot}"
@@ -65,10 +65,10 @@
                            Classes="dropdown-chevron"
                            Classes.open="{Binding #ColorPopup.IsOpen}"
                            Text="{x:Static theming:EditorIcons.ChevronDown}"
-                           FontFamily="{DynamicResource ShareX.FontFamily.Icon}"
+                           FontFamily="{DynamicResource VIrecord.FontFamily.Icon}"
                            FontWeight="Normal"
                            FontSize="10"
-                           Foreground="{DynamicResource ShareX.Brush.Text.Secondary}"
+                           Foreground="{DynamicResource VIrecord.Brush.Text.Secondary}"
                            VerticalAlignment="Center"/>
             </Grid>
         </Button>
@@ -80,10 +80,10 @@
                VerticalOffset="4">
             <Border Classes="popup-border popup-surface"
                     Classes.open="{Binding #ColorPopup.IsOpen}"
-                    Background="{DynamicResource ShareX.Brush.Background.Popup}" 
+                    Background="{DynamicResource VIrecord.Brush.Background.Popup}" 
                     CornerRadius="8" 
                     Padding="4"
-                    BorderBrush="{DynamicResource ShareX.Brush.Border}"
+                    BorderBrush="{DynamicResource VIrecord.Brush.Border}"
                     BorderThickness="1">
                 <cp:ColorView x:Name="ColorViewControl"
                               Color="{Binding SelectedColorValue, ElementName=ColorPickerDropdownRoot, Mode=TwoWay}"

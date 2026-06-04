@@ -2,10 +2,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:converters="using:ShareX.ImageEditor.Presentation.Converters"
-             xmlns:theming="using:ShareX.ImageEditor.Presentation.Theming"
+             xmlns:converters="using:VIrecord.ImageEditor.Presentation.Converters"
+             xmlns:theming="using:VIrecord.ImageEditor.Presentation.Theming"
              mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="40"
-             x:Class="ShareX.ImageEditor.Presentation.Controls.CornerRadiusPickerDropdown"
+             x:Class="VIrecord.ImageEditor.Presentation.Controls.CornerRadiusPickerDropdown"
              x:Name="CornerRadiusPickerDropdownRoot">
 
     <UserControl.Resources>
@@ -27,7 +27,7 @@
                     <Path Width="20"
                           Height="20"
                           Data="{Binding SelectedCornerRadius, ElementName=CornerRadiusPickerDropdownRoot, Converter={StaticResource CornerRadiusPreviewGeometry}, ConverterParameter=20}"
-                          Stroke="{DynamicResource ShareX.Brush.Text.Secondary}"
+                          Stroke="{DynamicResource VIrecord.Brush.Text.Secondary}"
                           StrokeThickness="2.5"
                           StrokeJoin="Round"
                           Stretch="None"
@@ -41,10 +41,10 @@
                            Classes="dropdown-chevron"
                            Classes.open="{Binding #CornerRadiusPopup.IsOpen}"
                            Text="{x:Static theming:EditorIcons.ChevronDown}"
-                           FontFamily="{DynamicResource ShareX.FontFamily.Icon}"
+                           FontFamily="{DynamicResource VIrecord.FontFamily.Icon}"
                            FontWeight="Normal"
                            FontSize="10"
-                           Foreground="{DynamicResource ShareX.Brush.Text.Secondary}"
+                           Foreground="{DynamicResource VIrecord.Brush.Text.Secondary}"
                            VerticalAlignment="Center"/>
             </Grid>
         </Button>
@@ -78,7 +78,7 @@
                                     <Path Width="20"
                                           Height="20"
                                           Data="{Binding ., Converter={StaticResource CornerRadiusPreviewGeometry}, ConverterParameter=20}"
-                                          Stroke="{DynamicResource ShareX.Brush.Text.Secondary}"
+                                          Stroke="{DynamicResource VIrecord.Brush.Text.Secondary}"
                                           StrokeThickness="2.5"
                                           StrokeJoin="Round"
                                           Stretch="None"

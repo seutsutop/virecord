@@ -5,7 +5,7 @@
              mc:Ignorable="d"
              d:DesignWidth="260"
              d:DesignHeight="36"
-             x:Class="ShareX.ImageEditor.Presentation.Controls.LabeledToggleSwitch"
+             x:Class="VIrecord.ImageEditor.Presentation.Controls.LabeledToggleSwitch"
              x:Name="LabeledToggleSwitchRoot"
              HorizontalAlignment="Stretch">
     <ToggleButton Classes="side-panel-toggle-row"

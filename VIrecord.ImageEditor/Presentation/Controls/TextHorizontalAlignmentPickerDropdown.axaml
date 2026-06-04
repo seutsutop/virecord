@@ -2,9 +2,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:converters="using:ShareX.ImageEditor.Presentation.Converters"
-             xmlns:theming="using:ShareX.ImageEditor.Presentation.Theming"
-             x:Class="ShareX.ImageEditor.Presentation.Controls.TextHorizontalAlignmentPickerDropdown"
+             xmlns:converters="using:VIrecord.ImageEditor.Presentation.Converters"
+             xmlns:theming="using:VIrecord.ImageEditor.Presentation.Theming"
+             x:Class="VIrecord.ImageEditor.Presentation.Controls.TextHorizontalAlignmentPickerDropdown"
              x:Name="TextHorizontalAlignmentPickerDropdownRoot"
              mc:Ignorable="d"
              d:DesignWidth="160"
@@ -23,10 +23,10 @@
             <Grid ColumnDefinitions="Auto,Auto">
                 <TextBlock Grid.Column="0"
                            Text="{Binding SelectedTextHorizontalAlignment, ElementName=TextHorizontalAlignmentPickerDropdownRoot, Converter={StaticResource TextHorizontalAlignmentConverter}, ConverterParameter=Icon}"
-                           FontFamily="{DynamicResource ShareX.FontFamily.Icon}"
+                           FontFamily="{DynamicResource VIrecord.FontFamily.Icon}"
                            FontWeight="Normal"
                            FontSize="18"
-                           Foreground="{DynamicResource ShareX.Brush.Text}"
+                           Foreground="{DynamicResource VIrecord.Brush.Text}"
                            VerticalAlignment="Center"
                            Margin="0,0,8,0"/>
 
@@ -34,10 +34,10 @@
                            Classes="dropdown-chevron"
                            Classes.open="{Binding #TextHorizontalAlignmentPopup.IsOpen}"
                            Text="{x:Static theming:EditorIcons.ChevronDown}"
-                           FontFamily="{DynamicResource ShareX.FontFamily.Icon}"
+                           FontFamily="{DynamicResource VIrecord.FontFamily.Icon}"
                            FontWeight="Normal"
                            FontSize="10"
-                           Foreground="{DynamicResource ShareX.Brush.Text.Secondary}"
+                           Foreground="{DynamicResource VIrecord.Brush.Text.Secondary}"
                            VerticalAlignment="Center"/>
             </Grid>
         </Button>
@@ -68,17 +68,17 @@
                                 <Grid ColumnDefinitions="Auto,*">
                                     <TextBlock Grid.Column="0"
                                                Text="{Binding ., Converter={StaticResource TextHorizontalAlignmentConverter}, ConverterParameter=Icon}"
-                                               FontFamily="{DynamicResource ShareX.FontFamily.Icon}"
+                                               FontFamily="{DynamicResource VIrecord.FontFamily.Icon}"
                                                FontWeight="Normal"
                                                FontSize="16"
-                                               Foreground="{DynamicResource ShareX.Brush.Text}"
+                                               Foreground="{DynamicResource VIrecord.Brush.Text}"
                                                VerticalAlignment="Center"
                                                Margin="0,0,8,0"/>
 
                                     <TextBlock Grid.Column="1"
                                                Text="{Binding ., Converter={StaticResource TextHorizontalAlignmentConverter}, ConverterParameter=Label}"
                                                FontSize="14"
-                                               Foreground="{DynamicResource ShareX.Brush.Text}"
+                                               Foreground="{DynamicResource VIrecord.Brush.Text}"
                                                VerticalAlignment="Center"/>
                                 </Grid>
                             </Button>

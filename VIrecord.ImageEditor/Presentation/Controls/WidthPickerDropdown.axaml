@@ -2,9 +2,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:theming="using:ShareX.ImageEditor.Presentation.Theming"
+             xmlns:theming="using:VIrecord.ImageEditor.Presentation.Theming"
              mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="40"
-             x:Class="ShareX.ImageEditor.Presentation.Controls.WidthPickerDropdown"
+             x:Class="VIrecord.ImageEditor.Presentation.Controls.WidthPickerDropdown"
              x:Name="WidthPickerDropdownRoot">
     <Grid>
         <!-- Dropdown Button -->
@@ -23,7 +23,7 @@
                       Margin="0,0,6,0">
                     <Ellipse Width="{Binding SelectedWidth, ElementName=WidthPickerDropdownRoot}"
                              Height="{Binding SelectedWidth, ElementName=WidthPickerDropdownRoot}"
-                             Fill="{DynamicResource ShareX.Brush.Text.Secondary}"
+                             Fill="{DynamicResource VIrecord.Brush.Text.Secondary}"
                              HorizontalAlignment="Center"
                              VerticalAlignment="Center"/>
                 </Grid>
@@ -36,10 +36,10 @@
                            Classes="dropdown-chevron"
                            Classes.open="{Binding #WidthPopup.IsOpen}"
                            Text="{x:Static theming:EditorIcons.ChevronDown}"
-                           FontFamily="{DynamicResource ShareX.FontFamily.Icon}"
+                           FontFamily="{DynamicResource VIrecord.FontFamily.Icon}"
                            FontWeight="Normal"
                            FontSize="10"
-                           Foreground="{DynamicResource ShareX.Brush.Text.Secondary}"
+                           Foreground="{DynamicResource VIrecord.Brush.Text.Secondary}"
                            VerticalAlignment="Center"/>
             </Grid>
         </Button>
@@ -70,7 +70,7 @@
                                 <Grid Width="24" Height="24">
                                     <Ellipse Width="{Binding .}"
                                              Height="{Binding .}"
-                                             Fill="{DynamicResource ShareX.Brush.Text.Secondary}"
+                                             Fill="{DynamicResource VIrecord.Brush.Text.Secondary}"
                                              HorizontalAlignment="Center"
                                              VerticalAlignment="Center"/>
                                 </Grid>

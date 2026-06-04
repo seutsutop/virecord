@@ -2,20 +2,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="using:ShareX.ImageEditor.Presentation.ViewModels"
-             xmlns:views="using:ShareX.ImageEditor.Presentation.Views"
-             xmlns:models="using:ShareX.ImageEditor.Core.Annotations"
-             xmlns:converters="using:ShareX.ImageEditor.Presentation.Converters"
-             xmlns:theming="using:ShareX.ImageEditor.Presentation.Theming"
-             xmlns:helpers="using:ShareX.ImageEditor.Presentation.Rendering"
-             xmlns:controls="using:ShareX.ImageEditor.Presentation.Controls"
+             xmlns:vm="using:VIrecord.ImageEditor.Presentation.ViewModels"
+             xmlns:views="using:VIrecord.ImageEditor.Presentation.Views"
+             xmlns:models="using:VIrecord.ImageEditor.Core.Annotations"
+             xmlns:converters="using:VIrecord.ImageEditor.Presentation.Converters"
+             xmlns:theming="using:VIrecord.ImageEditor.Presentation.Theming"
+             xmlns:helpers="using:VIrecord.ImageEditor.Presentation.Rendering"
+             xmlns:controls="using:VIrecord.ImageEditor.Presentation.Controls"
              mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="800"
-             x:Class="ShareX.ImageEditor.Presentation.Views.EditorView"
+             x:Class="VIrecord.ImageEditor.Presentation.Views.EditorView"
              x:DataType="vm:MainViewModel"
              Focusable="True">
 
     <UserControl.Styles>
-        <StyleInclude Source="avares://ShareX.ImageEditor/Presentation/Theming/ImageEditorStyles.axaml"/>
+        <StyleInclude Source="avares://VIrecord.ImageEditor/Presentation/Theming/ImageEditorStyles.axaml"/>
     </UserControl.Styles>
 
     <UserControl.DataTemplates>
@@ -39,7 +39,7 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceInclude Source="avares://ShareX.ImageEditor/Presentation/Theming/ImageEditorTheme.axaml"/>
+                <ResourceInclude Source="avares://VIrecord.ImageEditor/Presentation/Theming/ImageEditorTheme.axaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
         
@@ -48,19 +48,19 @@
 
         <ContextMenu x:Key="EditorContextMenu"
                      Placement="Pointer"
-                     BorderBrush="{DynamicResource ShareX.Brush.Border}"
+                     BorderBrush="{DynamicResource VIrecord.Brush.Border}"
                      BorderThickness="1"
                      CornerRadius="6"
                      Padding="6,2"
                      Cursor="Arrow">
             <MenuItem Header="Undo" Command="{Binding UndoCommand}" InputGesture="Ctrl+Z">
                 <MenuItem.Icon>
-                    <TextBlock FontFamily="{DynamicResource ShareX.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.ActionUndo}"/>
+                    <TextBlock FontFamily="{DynamicResource VIrecord.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.ActionUndo}"/>
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem Header="Redo" Command="{Binding RedoCommand}" InputGesture="Ctrl+Y">
                 <MenuItem.Icon>
-                    <TextBlock FontFamily="{DynamicResource ShareX.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.ActionRedo}"/>
+                    <TextBlock FontFamily="{DynamicResource VIrecord.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.ActionRedo}"/>
                 </MenuItem.Icon>
             </MenuItem>
 
@@ -68,17 +68,17 @@
 
             <MenuItem Header="Delete" Command="{Binding DeleteSelectedCommand}" InputGesture="Delete">
                 <MenuItem.Icon>
-                    <TextBlock FontFamily="{DynamicResource ShareX.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.ActionDelete}"/>
+                    <TextBlock FontFamily="{DynamicResource VIrecord.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.ActionDelete}"/>
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem Header="Delete all" Command="{Binding ClearAnnotationsCommand}" InputGesture="Shift+Delete">
                 <MenuItem.Icon>
-                    <TextBlock FontFamily="{DynamicResource ShareX.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.ActionClearAll}"/>
+                    <TextBlock FontFamily="{DynamicResource VIrecord.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.ActionClearAll}"/>
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem Header="Flatten" Command="{Binding FlattenImageCommand}" InputGesture="Ctrl+Shift+F">
                 <MenuItem.Icon>
-                    <TextBlock FontFamily="{DynamicResource ShareX.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.LayerFlatten}"/>
+                    <TextBlock FontFamily="{DynamicResource VIrecord.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.LayerFlatten}"/>
                 </MenuItem.Icon>
             </MenuItem>
 
@@ -86,22 +86,22 @@
 
             <MenuItem Header="Cut" Command="{Binding CutAnnotationCommand}" InputGesture="Ctrl+X">
                 <MenuItem.Icon>
-                    <TextBlock FontFamily="{DynamicResource ShareX.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.ToolCutOut}"/>
+                    <TextBlock FontFamily="{DynamicResource VIrecord.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.ToolCutOut}"/>
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem Header="Copy" Command="{Binding CopyAnnotationCommand}" InputGesture="Ctrl+Shift+C">
                 <MenuItem.Icon>
-                    <TextBlock FontFamily="{DynamicResource ShareX.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.ActionCopy}"/>
+                    <TextBlock FontFamily="{DynamicResource VIrecord.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.ActionCopy}"/>
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem Header="Paste" Command="{Binding PasteCommand}" InputGesture="Ctrl+V">
                 <MenuItem.Icon>
-                    <TextBlock FontFamily="{DynamicResource ShareX.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.ActionPaste}"/>
+                    <TextBlock FontFamily="{DynamicResource VIrecord.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.ActionPaste}"/>
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem Header="Duplicate" Command="{Binding DuplicateSelectedCommand}" InputGesture="Ctrl+D">
                 <MenuItem.Icon>
-                    <TextBlock FontFamily="{DynamicResource ShareX.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.ActionDuplicate}"/>
+                    <TextBlock FontFamily="{DynamicResource VIrecord.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.ActionDuplicate}"/>
                 </MenuItem.Icon>
             </MenuItem>
 
@@ -109,22 +109,22 @@
 
             <MenuItem Header="Bring to front" Command="{Binding BringToFrontCommand}" InputGesture="Home">
                 <MenuItem.Icon>
-                    <TextBlock FontFamily="{DynamicResource ShareX.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.ActionBringToFront}"/>
+                    <TextBlock FontFamily="{DynamicResource VIrecord.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.ActionBringToFront}"/>
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem Header="Bring forward" Command="{Binding BringForwardCommand}" InputGesture="PageUp">
                 <MenuItem.Icon>
-                    <TextBlock FontFamily="{DynamicResource ShareX.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.ActionBringForward}"/>
+                    <TextBlock FontFamily="{DynamicResource VIrecord.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.ActionBringForward}"/>
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem Header="Send backward" Command="{Binding SendBackwardCommand}" InputGesture="PageDown">
                 <MenuItem.Icon>
-                    <TextBlock FontFamily="{DynamicResource ShareX.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.ActionSendBackward}"/>
+                    <TextBlock FontFamily="{DynamicResource VIrecord.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.ActionSendBackward}"/>
                 </MenuItem.Icon>
             </MenuItem>
             <MenuItem Header="Send to back" Command="{Binding SendToBackCommand}" InputGesture="End">
                 <MenuItem.Icon>
-                    <TextBlock FontFamily="{DynamicResource ShareX.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.ActionSendToBack}"/>
+                    <TextBlock FontFamily="{DynamicResource VIrecord.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.ActionSendToBack}"/>
                 </MenuItem.Icon>
             </MenuItem>
 
@@ -132,33 +132,33 @@
 
             <MenuItem Header="{Binding ToggleToolbarsMenuHeader}" Command="{Binding ToggleToolbarsCommand}" InputGesture="Ctrl+H">
                 <MenuItem.Icon>
-                    <TextBlock FontFamily="{DynamicResource ShareX.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.ActionToggleToolbars}"/>
+                    <TextBlock FontFamily="{DynamicResource VIrecord.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.ActionToggleToolbars}"/>
                 </MenuItem.Icon>
             </MenuItem>
         </ContextMenu>
     </UserControl.Resources>
 
     <ThemeVariantScope x:Name="EditorThemeScope"
-                       RequestedThemeVariant="{x:Static theming:ThemeManager.ShareXDark}">
+                       RequestedThemeVariant="{x:Static theming:ThemeManager.VIrecordDark}">
         <Grid RowDefinitions="*">
 
         <!-- Row 0: Main Content Area with Preview and Sidebar (Background Layer) -->
-        <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" Background="{DynamicResource ShareX.Brush.Background.Main}">
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" Background="{DynamicResource VIrecord.Brush.Background.Main}">
 
             <!-- Left Sidebar (Settings Panel) -->
             <Border Grid.Column="0"
                     Classes="editor-sidebar left"
                     Classes.open="{Binding IsSettingsPanelOpen}"
                     Padding="0"
-                    Background="{DynamicResource ShareX.Brush.Background.Panel}"
-                    BorderBrush="{DynamicResource ShareX.Brush.Border}"
+                    Background="{DynamicResource VIrecord.Brush.Background.Panel}"
+                    BorderBrush="{DynamicResource VIrecord.Brush.Border}"
                     IsHitTestVisible="{Binding IsSettingsPanelOpen}">
                 <ScrollViewer x:Name="SidebarScrollViewer" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto"
                               ScrollChanged="OnSidebarScrollChanged">
                     <StackPanel Width="250" Spacing="0" Margin="16">
                         <StackPanel Orientation="Horizontal" Spacing="8" Margin="0,0,0,8">
                             <TextBlock Text="{x:Static theming:EditorIcons.PanelBackground}"
-                                       FontFamily="{DynamicResource ShareX.FontFamily.Icon}"
+                                       FontFamily="{DynamicResource VIrecord.FontFamily.Icon}"
                                        VerticalAlignment="Center"
                                        Margin="0,2,0,0"/>
                             <TextBlock Text="Background"
@@ -177,7 +177,7 @@
                                     Minimum="0"
                                     Maximum="200"
                                     Value="{Binding BackgroundMargin}"
-                                    Background="{DynamicResource ShareX.Brush.Control.Background.Disabled}"/>
+                                    Background="{DynamicResource VIrecord.Brush.Control.Background.Disabled}"/>
                         </StackPanel>
 
                         <!-- Background Padding -->
@@ -192,11 +192,11 @@
                                     Minimum="0"
                                     Maximum="200"
                                     Value="{Binding BackgroundPadding}"
-                                    Background="{DynamicResource ShareX.Brush.Control.Background.Disabled}"/>
+                                    Background="{DynamicResource VIrecord.Brush.Control.Background.Disabled}"/>
                             <controls:LabeledToggleSwitch Label="Smart padding"
                                                           IsChecked="{Binding BackgroundSmartPadding}"
                                                           IsEnabled="{Binding CanUseBackgroundSmartPadding}"
-                                                          ToggleForeground="{DynamicResource ShareX.Brush.Text.Secondary}"
+                                                          ToggleForeground="{DynamicResource VIrecord.Brush.Text.Secondary}"
                                                           Margin="0,0,0,16"/>
                         </StackPanel>
 
@@ -212,7 +212,7 @@
                                     Minimum="0"
                                     Maximum="50"
                                     Value="{Binding BackgroundRoundedCorner}"
-                                    Background="{DynamicResource ShareX.Brush.Control.Background.Disabled}"/>
+                                    Background="{DynamicResource VIrecord.Brush.Control.Background.Disabled}"/>
                         </StackPanel>
 
                         <!-- Background Shadow Radius -->
@@ -227,7 +227,7 @@
                                     Minimum="0"
                                     Maximum="100"
                                     Value="{Binding BackgroundShadowRadius}"
-                                    Background="{DynamicResource ShareX.Brush.Control.Background.Disabled}"/>
+                                    Background="{DynamicResource VIrecord.Brush.Control.Background.Disabled}"/>
                         </StackPanel>
 
                         <!-- Ratio -->
@@ -295,10 +295,10 @@
                                       SelectedItem="{Binding SelectedBackgroundModeOption, Mode=TwoWay}"
                                       Margin="0,0,0,12"
                                       Padding="8,6"
-                                      Background="{DynamicResource ShareX.Brush.Control.Background}"
-                                      BorderBrush="{DynamicResource ShareX.Brush.Border}"
+                                      Background="{DynamicResource VIrecord.Brush.Control.Background}"
+                                      BorderBrush="{DynamicResource VIrecord.Brush.Border}"
                                       BorderThickness="1"
-                                      Foreground="{DynamicResource ShareX.Brush.Text}"
+                                      Foreground="{DynamicResource VIrecord.Brush.Text}"
                                       HorizontalAlignment="Stretch">
                             </ComboBox>
 
@@ -321,7 +321,7 @@
                                                 <Border Width="46"
                                                         Height="36"
                                                         CornerRadius="5"
-                                                        BorderBrush="{DynamicResource ShareX.Brush.Border}"
+                                                        BorderBrush="{DynamicResource VIrecord.Brush.Border}"
                                                         BorderThickness="1"
                                                         Background="{Binding Brush}"/>
                                             </Button>
@@ -349,7 +349,7 @@
                                     <TextBlock Text="Background image"
                                                FontWeight="Normal"
                                                FontSize="11"
-                                               Foreground="{DynamicResource ShareX.Brush.Text.Secondary}"/>
+                                               Foreground="{DynamicResource VIrecord.Brush.Text.Secondary}"/>
                                     <TextBlock Text="{Binding BackgroundImagePath}"
                                                FontWeight="Normal"
                                                FontSize="11"
@@ -379,8 +379,8 @@
                         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                             <!-- Checkered Background -->
                             <Border BorderThickness="1"
-                                    BorderBrush="{DynamicResource ShareX.Brush.Border}"
-                                    Background="{DynamicResource ShareX.Brush.Checkered}"/>
+                                    BorderBrush="{DynamicResource VIrecord.Brush.Border}"
+                                    Background="{DynamicResource VIrecord.Brush.Checkered}"/>
 
                             <!-- Actual Content -->
                             <Border x:Name="PreviewFrame"
@@ -483,8 +483,8 @@
                     Classes="editor-sidebar right"
                     Classes.open="{Binding IsRightEffectsSidebarVisible}"
                     Padding="0"
-                    Background="{DynamicResource ShareX.Brush.Background.Panel}"
-                    BorderBrush="{DynamicResource ShareX.Brush.Border}"
+                    Background="{DynamicResource VIrecord.Brush.Background.Panel}"
+                    BorderBrush="{DynamicResource VIrecord.Brush.Border}"
                     IsHitTestVisible="{Binding IsRightEffectsSidebarVisible}">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -521,7 +521,7 @@
             Classes="editor-toolbar-host bottom"
             Classes.hidden="{Binding AreToolbarsHidden}"
             VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,0"
-                Padding="4" Background="{DynamicResource ShareX.Brush.Background.Toolbar}" BorderBrush="{DynamicResource ShareX.Brush.Border}" BorderThickness="1" CornerRadius="4,4,0,0"
+                Padding="4" Background="{DynamicResource VIrecord.Brush.Background.Toolbar}" BorderBrush="{DynamicResource VIrecord.Brush.Border}" BorderThickness="1" CornerRadius="4,4,0,0"
                 MaxWidth="{Binding Bounds.Width, RelativeSource={RelativeSource AncestorType=UserControl}}"
             ClipToBounds="False"
             IsHitTestVisible="{Binding ShowToolbars}">
@@ -535,7 +535,7 @@
                     ToolTip.Tip="Zoom (Ctrl + Wheel)" ToolTip.Placement="Top" ToolTip.VerticalOffset="-5"/>
 
                 <!-- Separator -->
-                <Border Width="1" Height="38" Background="{DynamicResource ShareX.Brush.Separator}" Margin="4,0"
+                <Border Width="1" Height="38" Background="{DynamicResource VIrecord.Brush.Separator}" Margin="4,0"
                         IsVisible="{Binding ShowBottomToolbar}"/>
 
                 <!-- Task Mode Buttons -->
@@ -550,7 +550,7 @@
                             ToolTip.Tip="Cancel (Esc)" ToolTip.Placement="Top" ToolTip.VerticalOffset="-5"
                             ZIndex="0">
                         <TextBlock Text="{x:Static theming:EditorIcons.ActionCancel}"
-                                   FontFamily="{DynamicResource ShareX.FontFamily.Icon}"
+                                   FontFamily="{DynamicResource VIrecord.FontFamily.Icon}"
                                    FontSize="18" FontWeight="Normal"
                                    VerticalAlignment="Center"/>
                     </Button>
@@ -565,7 +565,7 @@
                             ToolTip.Tip="{Binding ContinueButtonTooltip}" ToolTip.Placement="Top" ToolTip.VerticalOffset="-5"
                             ZIndex="20">
                         <TextBlock Text="{x:Static theming:EditorIcons.ActionContinue}"
-                                   FontFamily="{DynamicResource ShareX.FontFamily.Icon}"
+                                   FontFamily="{DynamicResource VIrecord.FontFamily.Icon}"
                                    FontSize="22" FontWeight="Normal"
                                    HorizontalAlignment="Center" VerticalAlignment="Center"
                                    Margin="4,0,0,0"/>
@@ -575,37 +575,37 @@
                 <Button Classes="editor-button" Command="{Binding CopyCommand}" Width="40" Padding="0"
                         IsVisible="{Binding ShowBottomToolbar}"
                         ToolTip.Tip="Copy image to clipboard (Ctrl+C)" ToolTip.Placement="Top" ToolTip.VerticalOffset="-5">
-                    <TextBlock Text="{x:Static theming:EditorIcons.ActionCopy}" FontSize="18" FontFamily="{DynamicResource ShareX.FontFamily.Icon}" FontWeight="Normal"/>
+                    <TextBlock Text="{x:Static theming:EditorIcons.ActionCopy}" FontSize="18" FontFamily="{DynamicResource VIrecord.FontFamily.Icon}" FontWeight="Normal"/>
                 </Button>
 
                 <Button Classes="editor-button" Command="{Binding SaveCommand}" Width="40" Padding="0"
                         IsVisible="{Binding ShowBottomToolbar}"
                         ToolTip.Tip="Save image (Ctrl+S)" ToolTip.Placement="Top" ToolTip.VerticalOffset="-5">
-                    <TextBlock Text="{x:Static theming:EditorIcons.ActionSave}" FontSize="18" FontFamily="{DynamicResource ShareX.FontFamily.Icon}" FontWeight="Normal"/>
+                    <TextBlock Text="{x:Static theming:EditorIcons.ActionSave}" FontSize="18" FontFamily="{DynamicResource VIrecord.FontFamily.Icon}" FontWeight="Normal"/>
                 </Button>
 
                 <Button Classes="editor-button" Command="{Binding SaveAsCommand}" Width="40" Padding="0"
                         IsVisible="{Binding ShowBottomToolbar}"
                         ToolTip.Tip="Save image as... (Ctrl+Shift+S)" ToolTip.Placement="Top" ToolTip.VerticalOffset="-5">
-                    <TextBlock Text="{x:Static theming:EditorIcons.ActionSaveAs}" FontSize="18" FontFamily="{DynamicResource ShareX.FontFamily.Icon}" FontWeight="Normal"/>
+                    <TextBlock Text="{x:Static theming:EditorIcons.ActionSaveAs}" FontSize="18" FontFamily="{DynamicResource VIrecord.FontFamily.Icon}" FontWeight="Normal"/>
                 </Button>
 
                 <Button Classes="editor-button" Command="{Binding PinToScreenCommand}" IsEnabled="{Binding HasPreviewImage}" Width="40" Padding="0"
                         IsVisible="{Binding ShowBottomToolbar}"
                         ToolTip.Tip="Pin image to screen (Ctrl+P)" ToolTip.Placement="Top" ToolTip.VerticalOffset="-5">
-                    <TextBlock Text="{x:Static theming:EditorIcons.ActionPinToScreen}" FontSize="18" FontFamily="{DynamicResource ShareX.FontFamily.Icon}" FontWeight="Normal"/>
+                    <TextBlock Text="{x:Static theming:EditorIcons.ActionPinToScreen}" FontSize="18" FontFamily="{DynamicResource VIrecord.FontFamily.Icon}" FontWeight="Normal"/>
                 </Button>
 
                 <Button Classes="editor-button" Command="{Binding PrintCommand}" IsEnabled="{Binding HasPreviewImage}" Width="40" Padding="0"
                         IsVisible="{Binding ShowBottomToolbar}"
                         ToolTip.Tip="Print image... (Ctrl+Shift+P)" ToolTip.Placement="Top" ToolTip.VerticalOffset="-5">
-                    <TextBlock Text="{x:Static theming:EditorIcons.ActionPrint}" FontSize="18" FontFamily="{DynamicResource ShareX.FontFamily.Icon}" FontWeight="Normal"/>
+                    <TextBlock Text="{x:Static theming:EditorIcons.ActionPrint}" FontSize="18" FontFamily="{DynamicResource VIrecord.FontFamily.Icon}" FontWeight="Normal"/>
                 </Button>
 
                 <Button Classes="editor-button" Command="{Binding UploadCommand}" IsEnabled="{Binding HasPreviewImage}" Width="40" Padding="0"
                         IsVisible="{Binding ShowBottomToolbar}"
                         ToolTip.Tip="Upload image (Ctrl+U)" ToolTip.Placement="Top" ToolTip.VerticalOffset="-5">
-                    <TextBlock Text="{x:Static theming:EditorIcons.ActionUpload}" FontSize="18" FontFamily="{DynamicResource ShareX.FontFamily.Icon}" FontWeight="Normal"/>
+                    <TextBlock Text="{x:Static theming:EditorIcons.ActionUpload}" FontSize="18" FontFamily="{DynamicResource VIrecord.FontFamily.Icon}" FontWeight="Normal"/>
                 </Button>
             </StackPanel>
         </Border>
@@ -626,7 +626,7 @@
             <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
                 <TextBlock Grid.Column="0"
                            Text="{Binding NotificationIcon}"
-                           FontFamily="{DynamicResource ShareX.FontFamily.Icon}"
+                           FontFamily="{DynamicResource VIrecord.FontFamily.Icon}"
                            FontWeight="Normal"
                            FontSize="18"
                            VerticalAlignment="Center"
@@ -635,7 +635,7 @@
                            Text="{Binding NotificationMessage}"
                            TextWrapping="Wrap"
                            VerticalAlignment="Center"
-                           Foreground="{DynamicResource ShareX.Brush.Text}"/>
+                           Foreground="{DynamicResource VIrecord.Brush.Text}"/>
             </Grid>
         </Border>
 
@@ -667,8 +667,8 @@
             <!-- The Panel Itself -->
             <Border Classes="floating-panel"
                     Classes.open="{Binding IsEffectBrowserVisible}"
-                    Background="{DynamicResource ShareX.Brush.Background.Panel}"
-                    BorderBrush="{DynamicResource ShareX.Brush.Border}"
+                    Background="{DynamicResource VIrecord.Brush.Background.Panel}"
+                    BorderBrush="{DynamicResource VIrecord.Brush.Border}"
                     BorderThickness="1"
                     CornerRadius="8"
                     HorizontalAlignment="Center"

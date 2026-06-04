@@ -2,30 +2,30 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:vm="using:ShareX.ImageEditor.Presentation.ViewModels"
-             xmlns:theming="clr-namespace:ShareX.ImageEditor.Presentation.Theming"
+             xmlns:vm="using:VIrecord.ImageEditor.Presentation.ViewModels"
+             xmlns:theming="clr-namespace:VIrecord.ImageEditor.Presentation.Theming"
              mc:Ignorable="d" d:DesignWidth="430" d:DesignHeight="310"
-             x:Class="ShareX.ImageEditor.Presentation.Views.InsertImageDialogView"
+             x:Class="VIrecord.ImageEditor.Presentation.Views.InsertImageDialogView"
              x:DataType="vm:InsertImageDialogViewModel">
 
-    <Border Background="{DynamicResource ShareX.Brush.Background.Popup}"
-            BorderBrush="{DynamicResource ShareX.Brush.Border}"
+    <Border Background="{DynamicResource VIrecord.Brush.Background.Popup}"
+            BorderBrush="{DynamicResource VIrecord.Brush.Border}"
             BorderThickness="1"
             CornerRadius="4"
             Padding="0"
             Width="380"
             BoxShadow="0 8 24 0 #50000000">
-        <Grid RowDefinitions="Auto,*" Background="{DynamicResource ShareX.Brush.Background.Panel}">
+        <Grid RowDefinitions="Auto,*" Background="{DynamicResource VIrecord.Brush.Background.Panel}">
             <Border Grid.Row="0"
-                    Background="{DynamicResource ShareX.Brush.Background.Toolbar}"
-                    BorderBrush="{DynamicResource ShareX.Brush.Border}"
+                    Background="{DynamicResource VIrecord.Brush.Background.Toolbar}"
+                    BorderBrush="{DynamicResource VIrecord.Brush.Border}"
                     BorderThickness="0,0,0,1"
                     Padding="14,8">
                 <Grid ColumnDefinitions="*,Auto">
                     <TextBlock Text="{Binding Title}"
                                FontSize="15"
                                VerticalAlignment="Center"
-                               Foreground="{DynamicResource ShareX.Brush.Text}"/>
+                               Foreground="{DynamicResource VIrecord.Brush.Text}"/>
 
                     <Button Grid.Column="1"
                             Classes="editor-button toolbar-button"
@@ -36,7 +36,7 @@
                             Padding="0"
                             HorizontalAlignment="Right">
                         <TextBlock Text="{x:Static theming:LucideIcons.x}"
-                                   FontFamily="{DynamicResource ShareX.FontFamily.Icon}"
+                                   FontFamily="{DynamicResource VIrecord.FontFamily.Icon}"
                                    FontWeight="Normal"
                                    FontSize="16"/>
                     </Button>
@@ -53,7 +53,7 @@
                         MinHeight="58">
                     <StackPanel Orientation="Horizontal" Spacing="12">
                         <TextBlock Text="{x:Static theming:LucideIcons.locate_fixed}"
-                                   FontFamily="{DynamicResource ShareX.FontFamily.Icon}"
+                                   FontFamily="{DynamicResource VIrecord.FontFamily.Icon}"
                                    FontSize="18"
                                    FontWeight="Normal"
                                    VerticalAlignment="Center"/>
@@ -62,7 +62,7 @@
                             <TextBlock Text="Keeps the current canvas size."
                                        FontSize="11"
                                        FontWeight="Normal"
-                                       Foreground="{DynamicResource ShareX.Brush.Text.Secondary}"/>
+                                       Foreground="{DynamicResource VIrecord.Brush.Text.Secondary}"/>
                         </StackPanel>
                     </StackPanel>
                 </Button>
@@ -75,7 +75,7 @@
                         MinHeight="58">
                     <StackPanel Orientation="Horizontal" Spacing="12">
                         <TextBlock Text="{x:Static theming:LucideIcons.arrow_down_to_line}"
-                                   FontFamily="{DynamicResource ShareX.FontFamily.Icon}"
+                                   FontFamily="{DynamicResource VIrecord.FontFamily.Icon}"
                                    FontSize="18"
                                    FontWeight="Normal"
                                    VerticalAlignment="Center"/>
@@ -84,7 +84,7 @@
                             <TextBlock Text="Expands the canvas downward before adding the image."
                                        FontSize="11"
                                        FontWeight="Normal"
-                                       Foreground="{DynamicResource ShareX.Brush.Text.Secondary}"/>
+                                       Foreground="{DynamicResource VIrecord.Brush.Text.Secondary}"/>
                         </StackPanel>
                     </StackPanel>
                 </Button>
@@ -97,7 +97,7 @@
                         MinHeight="58">
                     <StackPanel Orientation="Horizontal" Spacing="12">
                         <TextBlock Text="{x:Static theming:LucideIcons.arrow_right_to_line}"
-                                   FontFamily="{DynamicResource ShareX.FontFamily.Icon}"
+                                   FontFamily="{DynamicResource VIrecord.FontFamily.Icon}"
                                    FontSize="18"
                                    FontWeight="Normal"
                                    VerticalAlignment="Center"/>
@@ -106,7 +106,7 @@
                             <TextBlock Text="Expands the canvas to the right before adding the image."
                                        FontSize="11"
                                        FontWeight="Normal"
-                                       Foreground="{DynamicResource ShareX.Brush.Text.Secondary}"/>
+                                       Foreground="{DynamicResource VIrecord.Brush.Text.Secondary}"/>
                         </StackPanel>
                     </StackPanel>
                 </Button>

@@ -1,11 +1,11 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:models="clr-namespace:ShareX.ImageEditor.Core.Annotations;assembly=ShareX.ImageEditor"
-             xmlns:abstractions="clr-namespace:ShareX.ImageEditor.Core.Abstractions;assembly=ShareX.ImageEditor"
-             xmlns:converters="clr-namespace:ShareX.ImageEditor.Presentation.Converters;assembly=ShareX.ImageEditor"
-             xmlns:controls="using:ShareX.ImageEditor.Presentation.Controls"
-             xmlns:theming="clr-namespace:ShareX.ImageEditor.Presentation.Theming;assembly=ShareX.ImageEditor"
-             x:Class="ShareX.ImageEditor.Presentation.Controls.AnnotationToolbar"
+             xmlns:models="clr-namespace:VIrecord.ImageEditor.Core.Annotations;assembly=VIrecord.ImageEditor"
+             xmlns:abstractions="clr-namespace:VIrecord.ImageEditor.Core.Abstractions;assembly=VIrecord.ImageEditor"
+             xmlns:converters="clr-namespace:VIrecord.ImageEditor.Presentation.Converters;assembly=VIrecord.ImageEditor"
+             xmlns:controls="using:VIrecord.ImageEditor.Presentation.Controls"
+             xmlns:theming="clr-namespace:VIrecord.ImageEditor.Presentation.Theming;assembly=VIrecord.ImageEditor"
+             x:Class="VIrecord.ImageEditor.Presentation.Controls.AnnotationToolbar"
              x:Name="AnnotationToolbarRoot"
              x:DataType="abstractions:IAnnotationToolbarAdapter">
 
@@ -17,8 +17,8 @@
 
     <StackPanel Orientation="Vertical" Spacing="0">
         <Border Padding="4"
-                Background="{DynamicResource ShareX.Brush.Background.Toolbar}"
-                BorderBrush="{DynamicResource ShareX.Brush.Border}"
+                Background="{DynamicResource VIrecord.Brush.Background.Toolbar}"
+                BorderBrush="{DynamicResource VIrecord.Brush.Border}"
                 BorderThickness="1"
                 CornerRadius="0,0,4,4"
                 HorizontalAlignment="Center">
@@ -36,17 +36,17 @@
                             <Grid ColumnDefinitions="Auto,*,Auto">
                                 <TextBlock Grid.Column="0"
                                            Text="{x:Static theming:EditorIcons.FileMenu}"
-                                           FontFamily="{DynamicResource ShareX.FontFamily.Icon}" FontWeight="Normal" FontSize="18"
+                                           FontFamily="{DynamicResource VIrecord.FontFamily.Icon}" FontWeight="Normal" FontSize="18"
                                            VerticalAlignment="Center"/>
                                 <Border Grid.Column="1"/>
                                 <TextBlock Grid.Column="2"
                                            Classes="dropdown-chevron"
                                            Classes.open="{Binding #FileMenuButton.Flyout.IsOpen}"
                                            Text="{x:Static theming:EditorIcons.ChevronDown}"
-                                           FontFamily="{DynamicResource ShareX.FontFamily.Icon}"
+                                           FontFamily="{DynamicResource VIrecord.FontFamily.Icon}"
                                            FontWeight="Normal"
                                            FontSize="10"
-                                           Foreground="{DynamicResource ShareX.Brush.Text.Secondary}"
+                                           Foreground="{DynamicResource VIrecord.Brush.Text.Secondary}"
                                            VerticalAlignment="Center"/>
                             </Grid>
                             <Button.Flyout>
@@ -55,21 +55,21 @@
                                               Command="{ReflectionBinding NewImageCommand}"
                                               InputGesture="Ctrl+N">
                                         <MenuItem.Icon>
-                                            <TextBlock FontFamily="{DynamicResource ShareX.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.FileNew}"/>
+                                            <TextBlock FontFamily="{DynamicResource VIrecord.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.FileNew}"/>
                                         </MenuItem.Icon>
                                     </MenuItem>
                                     <MenuItem Header="Open..."
                                               Command="{ReflectionBinding OpenImageCommand}"
                                               InputGesture="Ctrl+O">
                                         <MenuItem.Icon>
-                                            <TextBlock FontFamily="{DynamicResource ShareX.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.FileOpen}"/>
+                                            <TextBlock FontFamily="{DynamicResource VIrecord.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.FileOpen}"/>
                                         </MenuItem.Icon>
                                     </MenuItem>
                                     <MenuItem Header="Open recent"
                                               IsVisible="{ReflectionBinding HasRecentImageFiles}"
                                               ItemsSource="{ReflectionBinding RecentImageMenuItems}">
                                         <MenuItem.Icon>
-                                            <TextBlock FontFamily="{DynamicResource ShareX.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:LucideIcons.history}"/>
+                                            <TextBlock FontFamily="{DynamicResource VIrecord.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:LucideIcons.history}"/>
                                         </MenuItem.Icon>
                                     </MenuItem>
                                     <Separator/>
@@ -77,14 +77,14 @@
                                               Command="{ReflectionBinding SaveCommand}"
                                               InputGesture="Ctrl+S">
                                         <MenuItem.Icon>
-                                            <TextBlock FontFamily="{DynamicResource ShareX.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.FileSave}"/>
+                                            <TextBlock FontFamily="{DynamicResource VIrecord.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.FileSave}"/>
                                         </MenuItem.Icon>
                                     </MenuItem>
                                     <MenuItem Header="Save as..."
                                               Command="{ReflectionBinding SaveAsCommand}"
                                               InputGesture="Ctrl+Shift+S">
                                         <MenuItem.Icon>
-                                            <TextBlock FontFamily="{DynamicResource ShareX.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.FileSaveAs}"/>
+                                            <TextBlock FontFamily="{DynamicResource VIrecord.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.FileSaveAs}"/>
                                         </MenuItem.Icon>
                                     </MenuItem>
                                     <Separator/>
@@ -92,7 +92,7 @@
                                                                                           IsVisible="{ReflectionBinding ShowOptionsButton}"
                                                                                           Click="OnOpenOptionsClick">
                                         <MenuItem.Icon>
-                                            <TextBlock FontFamily="{DynamicResource ShareX.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:LucideIcons.settings}"/>
+                                            <TextBlock FontFamily="{DynamicResource VIrecord.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:LucideIcons.settings}"/>
                                         </MenuItem.Icon>
                                     </MenuItem>
                                     <Separator IsVisible="{ReflectionBinding ShowOptionsButton}"/>
@@ -100,7 +100,7 @@
                                               Command="{ReflectionBinding ExitEditorCommand}"
                                               InputGesture="Escape">
                                         <MenuItem.Icon>
-                                            <TextBlock FontFamily="{DynamicResource ShareX.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.FileExit}"/>
+                                            <TextBlock FontFamily="{DynamicResource VIrecord.FontFamily.Icon}" FontWeight="Normal" Text="{x:Static theming:EditorIcons.FileExit}"/>
                                         </MenuItem.Icon>
                                     </MenuItem>
                                 </MenuFlyout>
@@ -108,7 +108,7 @@
                         </Button>
                         <Border Width="1"
                                 Margin="4,0"
-                                Background="{DynamicResource ShareX.Brush.Separator}"/>
+                                Background="{DynamicResource VIrecord.Brush.Separator}"/>
                     </StackPanel>
 
                     <Button Classes="editor-button toolbar-button"
@@ -225,35 +225,35 @@
                                 IsVisible="{Binding ShowTrailingActions, ElementName=AnnotationToolbarRoot}">
                         <Border Width="1"
                                 Margin="4,0"
-                                Background="{DynamicResource ShareX.Brush.Separator}"/>
+                                Background="{DynamicResource VIrecord.Brush.Separator}"/>
                         <Button Classes="editor-button toolbar-button"
                                 Classes.active="{Binding ActiveTool, Converter={StaticResource EqualsConverter}, ConverterParameter=Crop}"
                                 Command="{ReflectionBinding SelectToolCommand}" CommandParameter="{x:Static models:EditorTool.Crop}"
                                 ToolTip.Tip="Crop (C)"
-                                FontFamily="{DynamicResource ShareX.FontFamily.Icon}" FontWeight="Normal" FontSize="18" Content="{x:Static theming:EditorIcons.ToolCrop}"/>
+                                FontFamily="{DynamicResource VIrecord.FontFamily.Icon}" FontWeight="Normal" FontSize="18" Content="{x:Static theming:EditorIcons.ToolCrop}"/>
                         <Button Classes="editor-button toolbar-button"
                                 Classes.active="{Binding ActiveTool, Converter={StaticResource EqualsConverter}, ConverterParameter=CutOut}"
                                 Command="{ReflectionBinding SelectToolCommand}" CommandParameter="{x:Static models:EditorTool.CutOut}"
                                 ToolTip.Tip="Cut Out (U)"
-                                FontFamily="{DynamicResource ShareX.FontFamily.Icon}" FontWeight="Normal" FontSize="18" Content="{x:Static theming:EditorIcons.ToolCutOut}"/>
+                                FontFamily="{DynamicResource VIrecord.FontFamily.Icon}" FontWeight="Normal" FontSize="18" Content="{x:Static theming:EditorIcons.ToolCutOut}"/>
                         <Button Classes="editor-button toolbar-button"
                                 Classes.active="{ReflectionBinding IsSettingsPanelOpen}"
                                 Command="{ReflectionBinding ToggleSettingsPanelCommand}"
                                 ToolTip.Tip="Background"
-                                FontFamily="{DynamicResource ShareX.FontFamily.Icon}" FontWeight="Normal" FontSize="18" Content="{x:Static theming:EditorIcons.PanelBackground}"/>
+                                FontFamily="{DynamicResource VIrecord.FontFamily.Icon}" FontWeight="Normal" FontSize="18" Content="{x:Static theming:EditorIcons.PanelBackground}"/>
                         <Button Classes="editor-button toolbar-button"
                                 x:Name="ImageEffectsButton"
                                 Classes.active="{ReflectionBinding IsEffectsButtonActive}"
                                 Command="{ReflectionBinding ToggleEffectsPanelCommand}"
                                 PointerPressed="OnImageEffectsButtonPointerPressed"
                                 ToolTip.Tip="Image Effects"
-                                FontFamily="{DynamicResource ShareX.FontFamily.Icon}" FontWeight="Normal" FontSize="18" Content="{x:Static theming:EditorIcons.PanelEffects}"/>
+                                FontFamily="{DynamicResource VIrecord.FontFamily.Icon}" FontWeight="Normal" FontSize="18" Content="{x:Static theming:EditorIcons.PanelEffects}"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal"
                                 Spacing="4"
                                 IsVisible="{Binding ShowEditingActions, ElementName=AnnotationToolbarRoot}">
-                        <Border Width="1" Margin="4,0" Background="{DynamicResource ShareX.Brush.Separator}"/>
+                        <Border Width="1" Margin="4,0" Background="{DynamicResource VIrecord.Brush.Separator}"/>
                         <Button Classes="editor-button toolbar-button"
                                 IsEnabled="{Binding CanUndo}"
                                 Click="OnUndoClick"
@@ -281,8 +281,8 @@
 
         <Border Padding="4,0,4,4"
                 Margin="0,-1,0,0"
-                Background="{DynamicResource ShareX.Brush.Background.Toolbar}"
-                BorderBrush="{DynamicResource ShareX.Brush.Border}"
+                Background="{DynamicResource VIrecord.Brush.Background.Toolbar}"
+                BorderBrush="{DynamicResource VIrecord.Brush.Border}"
                 BorderThickness="1,0,1,1"
                 CornerRadius="0,0,4,4"
                 HorizontalAlignment="Center"
@@ -298,10 +298,10 @@
                             HorizontalAlignment="Center"
                             ToolTip.Tip="{Binding ActiveToolName}">
                         <TextBlock Text="{Binding ActiveToolIcon}"
-                                   FontFamily="{DynamicResource ShareX.FontFamily.Icon}"
+                                   FontFamily="{DynamicResource VIrecord.FontFamily.Icon}"
                                    FontSize="18"
                                    FontWeight="Normal"
-                                   Foreground="{DynamicResource ShareX.Brush.Accent}"
+                                   Foreground="{DynamicResource VIrecord.Brush.Accent}"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
                                    TextAlignment="Center"
@@ -430,10 +430,10 @@
                                     IsVisible="{Binding ShowSpotlightBlur}"
                                     ToolTip.Tip="Blur amount">
                             <TextBlock Text="{x:Static theming:EditorIcons.ToolBlur}"
-                                                FontFamily="{DynamicResource ShareX.FontFamily.Icon}"
+                                                FontFamily="{DynamicResource VIrecord.FontFamily.Icon}"
                                                 FontSize="18"
                                                 FontWeight="Normal"
-                                                Foreground="{DynamicResource ShareX.Brush.Text.Secondary}"
+                                                Foreground="{DynamicResource VIrecord.Brush.Text.Secondary}"
                                                 VerticalAlignment="Center"
                                                 HorizontalAlignment="Center"
                                                 TextAlignment="Center"
