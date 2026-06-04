@@ -8,6 +8,6 @@
     <ProjectReference Include="..\VIrecord.Core\VIrecord.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="FFMpegCore" Version="5.1.0" />
+    <PackageReference Include="FFMpegCore" />
   </ItemGroup>
 </Project>
