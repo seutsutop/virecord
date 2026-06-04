@@ -15,25 +15,23 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: '8.0.x'
-
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v2
+
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v2
 
     - name: Restore NuGet packages
       run: nuget restore VIrecord.sln
       shell: cmd
 
     - name: Build
-      run: msbuild VIrecord.sln /p:Configuration=Release /p:Platform="Any CPU" /m
+      run: msbuild VIrecord.sln /p:Configuration=Debug /p:Platform=x64 /m
       shell: cmd
 
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
         name: VIrecord-win-x64
-        path: VIrecord/bin/Release/
+        path: VIrecord/bin/
         if-no-files-found: warn
