@@ -8,6 +8,7 @@
     <ProjectReference Include="..\VIrecord.Core\VIrecord.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" />
     <PackageReference Include="FFMpegCore" />
   </ItemGroup>
 </Project>
