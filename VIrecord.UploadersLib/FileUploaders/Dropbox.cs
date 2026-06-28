@@ -119,25 +119,12 @@ namespace VIrecord.UploadersLib.FileUploaders
 
             string response = SendRequestMultiPart(URLOAuth2Token, args);
 
-            if (!string.IsNullOrEmpty(response))
-            {
-                OAuth2Token token = JsonConvert.DeserializeObject<OAuth2Token>(response);
-
-                if (token != null && !string.IsNullOrEmpty(token.access_token))
-                {
-                    AuthInfo.Token = token;
-                    return true;
-                }
-            }
-
-            return false;
+            return OAuth2Helper.ProcessTokenResponse(response, AuthInfo, updateExpireDate: false);
         }
 
         private NameValueCollection GetAuthHeaders()
         {
-            NameValueCollection headers = new NameValueCollection();
-            headers.Add("Authorization", "Bearer " + AuthInfo.Token.access_token);
-            return headers;
+            return OAuth2Helper.CreateBearerAuthHeaders(AuthInfo.Token.access_token);
         }
 
         public static string VerifyPath(string path, string fileName = null)

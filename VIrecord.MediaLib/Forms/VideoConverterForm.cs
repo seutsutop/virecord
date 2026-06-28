@@ -346,21 +346,15 @@ namespace VIrecord.MediaLib
 
         private void VideoConverterForm_DragEnter(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop, false))
-            {
-                e.Effect = DragDropEffects.Copy;
-            }
-            else
-            {
-                e.Effect = DragDropEffects.None;
-            }
+            DragDropHelper.HandleDragEnter(e);
         }
 
         private void VideoConverterForm_DragDrop(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop, false) && e.Data.GetData(DataFormats.FileDrop, false) is string[] files && files.Length > 0)
+            string filePath = DragDropHelper.GetFirstDroppedFile(e);
+
+            if (filePath != null)
             {
-                string filePath = files[0];
                 UpdateInputFilePathTextBox(filePath);
             }
         }

@@ -112,19 +112,7 @@ namespace VIrecord.UploadersLib.FileUploaders
 
             string response = SendRequestURLEncoded(HttpMethod.POST, TokenEndpoint, args);
 
-            if (!string.IsNullOrEmpty(response))
-            {
-                OAuth2Token token = JsonConvert.DeserializeObject<OAuth2Token>(response);
-
-                if (token != null && !string.IsNullOrEmpty(token.access_token))
-                {
-                    token.UpdateExpireDate();
-                    AuthInfo.Token = token;
-                    return true;
-                }
-            }
-
-            return false;
+            return OAuth2Helper.ProcessTokenResponse(response, AuthInfo);
         }
 
         public bool RefreshAccessToken()
@@ -139,19 +127,7 @@ namespace VIrecord.UploadersLib.FileUploaders
 
                 string response = SendRequestURLEncoded(HttpMethod.POST, TokenEndpoint, args);
 
-                if (!string.IsNullOrEmpty(response))
-                {
-                    OAuth2Token token = JsonConvert.DeserializeObject<OAuth2Token>(response);
-
-                    if (token != null && !string.IsNullOrEmpty(token.access_token))
-                    {
-                        token.UpdateExpireDate();
-                        string refresh_token = AuthInfo.Token.refresh_token;
-                        AuthInfo.Token = token;
-                        AuthInfo.Token.refresh_token = refresh_token;
-                        return true;
-                    }
-                }
+                return OAuth2Helper.ProcessTokenResponse(response, AuthInfo, preserveRefreshToken: true);
             }
 
             return false;
@@ -159,28 +135,12 @@ namespace VIrecord.UploadersLib.FileUploaders
 
         public bool CheckAuthorization()
         {
-            if (OAuth2Info.CheckOAuth(AuthInfo))
-            {
-                if (AuthInfo.Token.IsExpired && !RefreshAccessToken())
-                {
-                    Errors.Add("Refresh access token failed.");
-                    return false;
-                }
-            }
-            else
-            {
-                Errors.Add("Login is required.");
-                return false;
-            }
-
-            return true;
+            return OAuth2Helper.CheckAuthorization(AuthInfo, RefreshAccessToken, Errors);
         }
 
         private NameValueCollection GetAuthHeaders()
         {
-            NameValueCollection headers = new NameValueCollection();
-            headers.Add("Authorization", "Bearer " + AuthInfo.Token.access_token);
-            return headers;
+            return OAuth2Helper.CreateBearerAuthHeaders(AuthInfo.Token.access_token);
         }
 
         private string GetFolderUrl(string folderID)

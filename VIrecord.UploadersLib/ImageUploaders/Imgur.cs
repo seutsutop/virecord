@@ -117,19 +117,7 @@ namespace VIrecord.UploadersLib.ImageUploaders
 
             string response = SendRequestMultiPart("https://api.imgur.com/oauth2/token", args);
 
-            if (!string.IsNullOrEmpty(response))
-            {
-                OAuth2Token token = JsonConvert.DeserializeObject<OAuth2Token>(response);
-
-                if (token != null && !string.IsNullOrEmpty(token.access_token))
-                {
-                    token.UpdateExpireDate();
-                    AuthInfo.Token = token;
-                    return true;
-                }
-            }
-
-            return false;
+            return OAuth2Helper.ProcessTokenResponse(response, AuthInfo);
         }
 
         public bool RefreshAccessToken()
@@ -144,17 +132,7 @@ namespace VIrecord.UploadersLib.ImageUploaders
 
                 string response = SendRequestMultiPart("https://api.imgur.com/oauth2/token", args);
 
-                if (!string.IsNullOrEmpty(response))
-                {
-                    OAuth2Token token = JsonConvert.DeserializeObject<OAuth2Token>(response);
-
-                    if (token != null && !string.IsNullOrEmpty(token.access_token))
-                    {
-                        token.UpdateExpireDate();
-                        AuthInfo.Token = token;
-                        return true;
-                    }
-                }
+                return OAuth2Helper.ProcessTokenResponse(response, AuthInfo);
             }
 
             return false;
@@ -162,28 +140,12 @@ namespace VIrecord.UploadersLib.ImageUploaders
 
         private NameValueCollection GetAuthHeaders()
         {
-            NameValueCollection headers = new NameValueCollection();
-            headers.Add("Authorization", "Bearer " + AuthInfo.Token.access_token);
-            return headers;
+            return OAuth2Helper.CreateBearerAuthHeaders(AuthInfo.Token.access_token);
         }
 
         public bool CheckAuthorization()
         {
-            if (OAuth2Info.CheckOAuth(AuthInfo))
-            {
-                if (AuthInfo.Token.IsExpired && !RefreshAccessToken())
-                {
-                    Errors.Add("Refresh access token failed.");
-                    return false;
-                }
-            }
-            else
-            {
-                Errors.Add("Imgur login is required.");
-                return false;
-            }
-
-            return true;
+            return OAuth2Helper.CheckAuthorization(AuthInfo, RefreshAccessToken, Errors, "Imgur");
         }
 
         public List<ImgurAlbumData> GetAlbums(int maxPage = 10, int perPage = 100)
