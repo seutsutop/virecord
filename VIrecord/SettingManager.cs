@@ -346,8 +346,9 @@ namespace VIrecord
                     {
                         cui.CheckBackwardCompatibility();
                     }
-                    catch
+                    catch (Exception e)
                     {
+                        DebugHelper.WriteException(e, "Error during custom uploader backward compatibility check");
                     }
                 }
             }

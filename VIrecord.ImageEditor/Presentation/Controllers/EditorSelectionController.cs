@@ -1558,7 +1558,10 @@ public class EditorSelectionController
                 }
             }
         }
-        catch { /* Fallback to stroke color */ }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Color contrast calculation failed, falling back to stroke color: {ex.Message}");
+        }
 
         // Determine a safe background for the TextBox to ensure visibility
         // Use the fill color of the balloon as the base background for the editor
@@ -2220,7 +2223,10 @@ public class EditorSelectionController
                 }
             }
         }
-        catch { }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Color contrast calculation failed in UpdateActiveTextEditorProperties: {ex.Message}");
+        }
 
         IBrush editorBackground;
         var fillColor = Avalonia.Media.Color.Parse(annotation.FillColor);

@@ -81,7 +81,7 @@ namespace VIrecord.HistoryLib
             }
             catch (Exception e)
             {
-                DebugHelper.WriteException(e);
+                DebugHelper.WriteException(e, $"Failed to append history items to {FilePath}");
             }
 
             return false;

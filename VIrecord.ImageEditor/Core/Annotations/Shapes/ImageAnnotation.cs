@@ -60,8 +60,16 @@ public class ImageAnnotation : Annotation, IDisposable
                 ImagePath = path;
                 _imageBitmap?.Dispose();
                 _imageBitmap = SKBitmap.Decode(path);
+
+                if (_imageBitmap == null)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Failed to decode image: {path}");
+                }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error loading image annotation '{path}': {ex.Message}");
+            }
         }
     }
 

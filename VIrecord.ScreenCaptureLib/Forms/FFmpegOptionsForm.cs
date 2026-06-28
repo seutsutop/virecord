@@ -334,7 +334,10 @@ namespace VIrecord.ScreenCaptureLib
                             result = process.WaitForExit(1000 * 60 * 5) && process.ExitCode == 0;
                         }
                     }
-                    catch { }
+                    catch (Exception ex)
+                    {
+                        DebugHelper.WriteException(ex, "Failed to install helper devices");
+                    }
                 });
 
                 if (result)

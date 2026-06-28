@@ -1042,7 +1042,10 @@ public class EditorInputController
                 _view.UpdateInteractiveEffectVisual(shape, _cachedSkBitmap, new Rect(x, y, width, height));
             }
         }
-        catch { }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Error updating interactive effect visual: {ex.Message}");
+        }
     }
 
     /// <summary>
