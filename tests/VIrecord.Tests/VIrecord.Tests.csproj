@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <!-- Suppress warnings for nullable annotations in legacy code compiled into tests -->
+    <NoWarn>$(NoWarn);CS8618;CS8600;CS8601;CS8602;CS8603;CS8604;CS8625</NoWarn>
+  </PropertyGroup>
+
+  <!-- Compile source files directly to avoid net*-windows TFM dependency -->
+  <ItemGroup>
+    <!-- VIrecord.Core -->
+    <Compile Include="../../src/VIrecord.Core/Models.cs" Link="Sources/Core/Models.cs" />
+
+    <!-- VIrecord.HelpersLib: platform-agnostic utilities -->
+    <Compile Include="../../VIrecord.HelpersLib/Vector2.cs" Link="Sources/HelpersLib/Vector2.cs" />
+    <Compile Include="../../VIrecord.HelpersLib/Helpers/MathHelpers.cs" Link="Sources/HelpersLib/MathHelpers.cs" />
+    <Compile Include="../../VIrecord.HelpersLib/Extensions/StringExtensions.cs" Link="Sources/HelpersLib/StringExtensions.cs" />
+    <Compile Include="../../VIrecord.HelpersLib/Extensions/NumberExtensions.cs" Link="Sources/HelpersLib/NumberExtensions.cs" />
+
+    <!-- VIrecord.HistoryLib: history models and filtering -->
+    <Compile Include="../../VIrecord.HistoryLib/HistoryItem.cs" Link="Sources/HistoryLib/HistoryItem.cs" />
+    <Compile Include="../../VIrecord.HistoryLib/HistoryFilter.cs" Link="Sources/HistoryLib/HistoryFilter.cs" />
+
+    <!-- VIrecord.IndexerLib: folder info -->
+    <Compile Include="../../VIrecord.IndexerLib/FolderInfo.cs" Link="Sources/IndexerLib/FolderInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageReference Include="xunit" Version="2.6.6" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.6">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="System.Drawing.Common" Version="8.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+</Project>
