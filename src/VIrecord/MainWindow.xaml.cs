@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Threading;
 using VIrecord.Core;
@@ -13,6 +14,7 @@ public partial class MainWindow : Window
     private DispatcherTimer? _captureTimer;
     private RecordingState _state = RecordingState.Stopped;
     private DateTime _recordingStart;
+    private int _consecutiveFrameErrors;
 
     public MainWindow()
     {
@@ -31,7 +33,21 @@ public partial class MainWindow : Window
     private void StartRecording()
     {
         _encoder = new VideoEncoder(_settings);
-        string outputPath = _encoder.StartRecording("");
+        _encoder.ErrorOccurred += OnEncoderError;
+        _consecutiveFrameErrors = 0;
+
+        try
+        {
+            _encoder.StartRecording("");
+        }
+        catch (InvalidOperationException ex)
+        {
+            MessageBox.Show(ex.Message, "VIrecord - Recording Error",
+                MessageBoxButton.OK, MessageBoxImage.Error);
+            _encoder.Dispose();
+            _encoder = null;
+            return;
+        }
 
         _recordingStart = DateTime.Now;
         _state = RecordingState.Recording;
@@ -63,8 +79,35 @@ public partial class MainWindow : Window
         {
             using var bitmap = ScreenCapturer.CaptureScreen();
             _encoder?.WriteFrame(bitmap);
+            _consecutiveFrameErrors = 0;
         }
-        catch { }
+        catch (Exception ex)
+        {
+            _consecutiveFrameErrors++;
+            Debug.WriteLine($"Frame capture error ({_consecutiveFrameErrors}): {ex.Message}");
+
+            if (_consecutiveFrameErrors >= 10)
+            {
+                Dispatcher.BeginInvoke(() =>
+                {
+                    StopRecording();
+                    MessageBox.Show(
+                        $"Recording stopped due to repeated capture failures.\n\n{ex.Message}",
+                        "VIrecord - Recording Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+                });
+            }
+        }
+    }
+
+    private void OnEncoderError(object? sender, EncoderErrorEventArgs e)
+    {
+        Debug.WriteLine($"Encoder error: {e.Message}");
+        Dispatcher.BeginInvoke(() =>
+        {
+            StopRecording();
+            MessageBox.Show(e.Message, "VIrecord - Encoder Error",
+                MessageBoxButton.OK, MessageBoxImage.Warning);
+        });
     }
 
     private void UpdateStatus()

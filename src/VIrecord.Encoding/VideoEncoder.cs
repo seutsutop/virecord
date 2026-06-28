@@ -12,6 +12,8 @@ public class VideoEncoder : IDisposable
     private bool _isRecording;
     private readonly object _lock = new();
 
+    public event EventHandler<EncoderErrorEventArgs>? ErrorOccurred;
+
     public VideoEncoder(RecordingSettings settings)
     {
         _settings = settings;
@@ -46,7 +48,20 @@ public class VideoEncoder : IDisposable
                 }
             };
 
-            _ffmpegProcess.Start();
+            try
+            {
+                _ffmpegProcess.Start();
+            }
+            catch (Exception ex)
+            {
+                _ffmpegProcess.Dispose();
+                _ffmpegProcess = null;
+                ErrorOccurred?.Invoke(this, new EncoderErrorEventArgs(
+                    "Failed to start FFmpeg. Ensure FFmpeg is installed and available in PATH.", ex));
+                throw new InvalidOperationException(
+                    "Failed to start FFmpeg. Ensure FFmpeg is installed and available in PATH.", ex);
+            }
+
             _isRecording = true;
 
             return fileName;
@@ -68,9 +83,15 @@ public class VideoEncoder : IDisposable
                 _ffmpegProcess.StandardInput.BaseStream.Write(pngData, 0, pngData.Length);
                 _ffmpegProcess.StandardInput.BaseStream.Flush();
             }
-            catch
+            catch (IOException ex)
             {
-                // FFmpeg process may have ended
+                _isRecording = false;
+                ErrorOccurred?.Invoke(this, new EncoderErrorEventArgs(
+                    "FFmpeg pipe broken — recording stopped. The encoder process may have crashed.", ex));
+            }
+            catch (ObjectDisposedException)
+            {
+                _isRecording = false;
             }
         }
     }
@@ -85,8 +106,19 @@ public class VideoEncoder : IDisposable
             {
                 _ffmpegProcess?.StandardInput.Close();
                 _ffmpegProcess?.WaitForExit(10000);
+
+                if (_ffmpegProcess is { HasExited: true, ExitCode: not 0 })
+                {
+                    string stderr = "";
+                    try { stderr = _ffmpegProcess.StandardError.ReadToEnd(); } catch { }
+                    ErrorOccurred?.Invoke(this, new EncoderErrorEventArgs(
+                        $"FFmpeg exited with code {_ffmpegProcess.ExitCode}.{(string.IsNullOrEmpty(stderr) ? "" : " " + stderr)}", null));
+                }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error during FFmpeg shutdown: {ex.Message}");
+            }
             finally
             {
                 _ffmpegProcess?.Dispose();
@@ -153,5 +185,17 @@ public class VideoEncoder : IDisposable
     {
         StopRecording();
         GC.SuppressFinalize(this);
+    }
+}
+
+public class EncoderErrorEventArgs : EventArgs
+{
+    public string Message { get; }
+    public Exception? InnerException { get; }
+
+    public EncoderErrorEventArgs(string message, Exception? innerException)
+    {
+        Message = message;
+        InnerException = innerException;
     }
 }
