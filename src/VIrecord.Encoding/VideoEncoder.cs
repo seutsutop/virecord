@@ -131,7 +131,7 @@ public class VideoEncoder : IDisposable
         }
 
         args.Add("-y");
-        args.Add(outputPath);
+        args.Add($"\"{outputPath}\"");
 
         return string.Join(" ", args);
     }

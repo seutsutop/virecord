@@ -25,6 +25,7 @@
 
 using VIrecord.HelpersLib;
 using VIrecord.HistoryLib;
+using VIrecord.ImageEffectsLib;
 using VIrecord.Properties;
 using VIrecord.ScreenCaptureLib;
 using VIrecord.UploadersLib;
@@ -144,9 +145,11 @@ namespace VIrecord
 
         public static void LoadApplicationConfig(bool fallbackSupport = true)
         {
+            ApplicationConfig.TypeNameSerializationBinder = new ImageEffectsSerializationBinder();
             Settings = ApplicationConfig.Load(ApplicationConfigFilePath, BackupFolder, fallbackSupport);
             Settings.CreateBackup = true;
             Settings.CreateWeeklyBackup = true;
+            Settings.SupportDPAPIEncryption = true;
             Settings.SettingsSaveFailed += Settings_SettingsSaveFailed;
             DefaultTaskSettings = Settings.DefaultTaskSettings;
             ApplicationConfigBackwardCompatibilityTasks();

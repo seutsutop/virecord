@@ -96,7 +96,7 @@ namespace VIrecord
                 }
                 else
                 {
-                    throw new Exception($"Error from OpenRouter API: {responseString}");
+                    throw new Exception($"OpenRouter API request failed with status {(int)response.StatusCode}.");
                 }
             }
         }

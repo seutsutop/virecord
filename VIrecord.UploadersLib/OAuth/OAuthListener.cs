@@ -69,7 +69,7 @@ namespace VIrecord.UploadersLib
             if (!string.IsNullOrEmpty(url))
             {
                 URLHelpers.OpenURL(url);
-                DebugHelper.WriteLine("Authorization URL is opened: " + url);
+                DebugHelper.WriteLine("Authorization URL is opened.");
             }
             else
             {
