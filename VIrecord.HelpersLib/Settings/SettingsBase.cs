@@ -25,6 +25,7 @@
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -66,6 +67,8 @@ namespace VIrecord.HelpersLib
 
         [Browsable(false), JsonIgnore]
         public bool SupportDPAPIEncryption { get; set; }
+
+        public static ISerializationBinder TypeNameSerializationBinder { get; set; }
 
         public bool IsUpgradeFrom(string version)
         {
@@ -273,6 +276,12 @@ namespace VIrecord.HelpersLib
                                 serializer.DateTimeZoneHandling = DateTimeZoneHandling.Local;
                                 serializer.ObjectCreationHandling = ObjectCreationHandling.Replace;
                                 serializer.Error += Serializer_Error;
+
+                                if (TypeNameSerializationBinder != null)
+                                {
+                                    serializer.SerializationBinder = TypeNameSerializationBinder;
+                                }
+
                                 settings = serializer.Deserialize<T>(jsonReader);
                             }
 

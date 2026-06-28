@@ -92,7 +92,7 @@ namespace VIrecord.UploadersLib
                 {
                     Config.FlickrOAuthInfo = oauth;
                     URLHelpers.OpenURL(url);
-                    DebugHelper.WriteLine("FlickrAuthOpen - Authorization URL is opened: " + url);
+                    DebugHelper.WriteLine("FlickrAuthOpen - Authorization URL is opened.");
                 }
                 else
                 {
@@ -832,7 +832,7 @@ namespace VIrecord.UploadersLib
                 if (!string.IsNullOrEmpty(url))
                 {
                     URLHelpers.OpenURL(url);
-                    DebugHelper.WriteLine(uploader.ToString() + " - Authorization URL is opened: " + url);
+                    DebugHelper.WriteLine(uploader.ToString() + " - Authorization URL is opened.");
                     return uploader.AuthInfo;
                 }
                 else

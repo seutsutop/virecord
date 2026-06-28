@@ -55,9 +55,9 @@ namespace VIrecord.UploadersLib.ImageUploaders
 
     public sealed class Photobucket : ImageUploader, IOAuth
     {
-        private const string URLRequestToken = "http://api.photobucket.com/login/request";
-        private const string URLAuthorize = "http://photobucket.com/apilogin/login";
-        private const string URLAccessToken = "http://api.photobucket.com/login/access";
+        private const string URLRequestToken = "https://api.photobucket.com/login/request";
+        private const string URLAuthorize = "https://photobucket.com/apilogin/login";
+        private const string URLAccessToken = "https://api.photobucket.com/login/access";
 
         public OAuthInfo AuthInfo { get; set; }
         public PhotobucketAccountInfo AccountInfo { get; set; }

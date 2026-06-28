@@ -60,6 +60,8 @@ namespace VIrecord
         {
             using (HttpClient client = new HttpClient())
             {
+                client.DefaultRequestHeaders.Add("x-goog-api-key", apiKey);
+
                 var payload = new
                 {
                     contents = new[]
@@ -78,7 +80,7 @@ namespace VIrecord
                 string jsonPayload = JsonConvert.SerializeObject(payload);
                 StringContent content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
 
-                string url = $"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={apiKey}";
+                string url = $"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent";
 
                 HttpResponseMessage response = await client.PostAsync(url, content);
                 string responseString = await response.Content.ReadAsStringAsync();
@@ -90,7 +92,7 @@ namespace VIrecord
                 }
                 else
                 {
-                    throw new Exception($"Error from Gemini API: {responseString}");
+                    throw new Exception($"Gemini API request failed with status {(int)response.StatusCode}.");
                 }
             }
         }
