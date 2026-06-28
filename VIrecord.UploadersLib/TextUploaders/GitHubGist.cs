@@ -96,18 +96,7 @@ namespace VIrecord.UploadersLib.TextUploaders
 
             string response = SendRequestMultiPart("https://github.com/login/oauth/access_token", args, headers);
 
-            if (!string.IsNullOrEmpty(response))
-            {
-                OAuth2Token token = JsonConvert.DeserializeObject<OAuth2Token>(response);
-
-                if (token != null && !string.IsNullOrEmpty(token.access_token))
-                {
-                    AuthInfo.Token = token;
-                    return true;
-                }
-            }
-
-            return false;
+            return OAuth2Helper.ProcessTokenResponse(response, AuthInfo, updateExpireDate: false);
         }
 
         public override UploadResult UploadText(string text, string fileName)

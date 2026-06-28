@@ -111,9 +111,7 @@ namespace VIrecord.UploadersLib.URLShorteners
 
         private NameValueCollection GetAuthHeaders()
         {
-            NameValueCollection headers = new NameValueCollection();
-            headers.Add("Authorization", "Bearer " + AuthInfo.Token.access_token);
-            return headers;
+            return OAuth2Helper.CreateBearerAuthHeaders(AuthInfo.Token.access_token);
         }
 
         public override UploadResult ShortenURL(string url)

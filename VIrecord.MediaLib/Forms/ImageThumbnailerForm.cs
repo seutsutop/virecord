@@ -93,19 +93,14 @@ namespace VIrecord.MediaLib
 
         private void lvImages_DragEnter(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop, false))
-            {
-                e.Effect = DragDropEffects.Copy;
-            }
-            else
-            {
-                e.Effect = DragDropEffects.None;
-            }
+            DragDropHelper.HandleDragEnter(e);
         }
 
         private void lvImages_DragDrop(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop, false) && e.Data.GetData(DataFormats.FileDrop, false) is string[] files)
+            string[] files = DragDropHelper.GetDroppedFiles(e);
+
+            if (files != null)
             {
                 foreach (string file in files)
                 {

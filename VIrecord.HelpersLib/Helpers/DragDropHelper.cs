@@ -23,32 +23,45 @@
 
 #endregion License Information (GPL v3)
 
-using VIrecord.HelpersLib;
 using System;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace VIrecord.MediaLib
+namespace VIrecord.HelpersLib
 {
-    public static class FFmpegGitHubDownloader
+    public static class DragDropHelper
     {
-        public static async Task<DialogResult> DownloadFFmpeg(bool async, DownloaderForm.DownloaderInstallEventHandler installRequested)
+        public static void HandleDragEnter(DragEventArgs e)
         {
-            FFmpegUpdateChecker updateChecker = new FFmpegUpdateChecker("VIrecord", "FFmpeg");
-            string url = await updateChecker.GetLatestDownloadURL(true);
-
-            using (DownloaderForm form = new DownloaderForm(url, "ffmpeg.zip"))
+            if (e.Data.GetDataPresent(DataFormats.FileDrop, false))
             {
-                form.InstallType = InstallType.Event;
-                form.RunInstallerInBackground = async;
-                form.InstallRequested += installRequested;
-                return form.ShowDialog();
+                e.Effect = DragDropEffects.Copy;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
             }
         }
 
-        public static bool ExtractFFmpeg(string archivePath, string extractPath)
+        public static string[] GetDroppedFiles(DragEventArgs e)
         {
-            return FFmpegDownloader.ExtractFFmpeg(archivePath, extractPath);
+            if (e.Data.GetDataPresent(DataFormats.FileDrop, false) && e.Data.GetData(DataFormats.FileDrop, false) is string[] files)
+            {
+                return files;
+            }
+
+            return null;
+        }
+
+        public static string GetFirstDroppedFile(DragEventArgs e)
+        {
+            string[] files = GetDroppedFiles(e);
+
+            if (files != null && files.Length > 0)
+            {
+                return files[0];
+            }
+
+            return null;
         }
     }
 }
